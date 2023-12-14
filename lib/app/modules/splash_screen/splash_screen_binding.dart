@@ -5,7 +5,7 @@ import 'package:tfg_frontend/app/modules/splash_screen/splash_screen_controller.
 class SplashScreenBinding implements Bindings {
 @override
 void dependencies() {
-  Get.lazyPut<SplashScreenController>(() => SplashScreenController(
-     SplashScreenRepository()));
+    Get.lazyPut<SplashScreenController>(() => SplashScreenController(
+      SplashScreenRepository()));
   }
 }

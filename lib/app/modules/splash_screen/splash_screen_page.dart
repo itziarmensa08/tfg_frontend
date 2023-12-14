@@ -3,10 +3,11 @@ import 'package:get/get.dart';
 import 'package:tfg_frontend/app/modules/splash_screen/splash_screen_controller.dart';
 
 class SplashScreenPage extends GetView<SplashScreenController> {
-  const SplashScreenPage({super.key});
+  const SplashScreenPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    controller.checkUser();
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       body: SafeArea(
