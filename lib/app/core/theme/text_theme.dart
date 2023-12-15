@@ -14,6 +14,12 @@ const TextStyle textDarkGrayTextStyle = TextStyle(
   color: Color(0xFFCBC8C8),
 );
 
+const TextStyle textOrangeTextStyle = TextStyle(
+  fontFamily: 'Agrandir',
+  fontSize: 16,
+  color: Color(0xFFF3720A),
+);
+
 ButtonStyle buttonBlueStyle = ButtonStyle(
   backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFF10619A)), // Color de fondo del botón
   padding: MaterialStateProperty.all<EdgeInsetsGeometry>(

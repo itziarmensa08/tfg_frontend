@@ -16,11 +16,14 @@ class LoginForm extends Container {
       child: Column(
         children: [
           TextFormField(
+            cursorColor: Theme.of(context).hintColor,
             style: textDarkGrayTextStyle,
             decoration: InputDecoration(
               filled: true,
               fillColor: Theme.of(context).colorScheme.background,
               labelText: 'Nombre de usuario',
+              labelStyle: textDarkGrayTextStyle,
+              floatingLabelStyle: textOrangeTextStyle,
               enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide(
                   color: Theme.of(context).colorScheme.background,
@@ -31,17 +34,20 @@ class LoginForm extends Container {
                   color: Theme.of(context).colorScheme.background,
                 ),
               ),
-              suffixIcon: const Icon(Icons.person, color: Color(0xFFCBC8C8),)
+              suffixIcon: const Icon(Icons.person, color: Color(0xFFCBC8C8),),
             ),
           ),
           const SizedBox(height: 20),
           TextFormField(
+            cursorColor: Theme.of(context).hintColor,
             style: textDarkGrayTextStyle,
             obscureText: true,
             decoration: InputDecoration(
               filled: true,
               fillColor: Theme.of(context).colorScheme.background,
               labelText: 'Contraseña',
+              labelStyle: textDarkGrayTextStyle,
+              floatingLabelStyle: textOrangeTextStyle,
               enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide(
                   color: Theme.of(context).colorScheme.background,
