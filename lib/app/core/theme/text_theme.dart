@@ -21,13 +21,13 @@ const TextStyle textOrangeTextStyle = TextStyle(
 );
 
 ButtonStyle buttonBlueStyle = ButtonStyle(
-  backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFF10619A)), // Color de fondo del botón
+  backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFF10619A)),
   padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-    const EdgeInsets.symmetric(horizontal: 30, vertical: 15), // Ajusta el relleno al que necesites
+    const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
   ),
   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
     RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(5), // Ajusta el radio del borde al que necesites
+      borderRadius: BorderRadius.circular(5),
     ),
   ),
 );
