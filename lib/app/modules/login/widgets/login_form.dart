@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tfg_frontend/app/core/theme/text_theme.dart';
-import 'package:tfg_frontend/app/core/utils/helpers/toast.dart';
+import 'package:tfg_frontend/app/data/repository/login_repository.dart';
 import 'package:tfg_frontend/app/modules/login/login_controller.dart';
 
 class LoginForm extends Container {
@@ -17,6 +17,7 @@ class LoginForm extends Container {
       child: Column(
         children: [
           TextFormField(
+            controller: controller.username,
             cursorColor: Theme.of(context).hintColor,
             style: textDarkGrayTextStyle,
             decoration: InputDecoration(
@@ -40,6 +41,7 @@ class LoginForm extends Container {
           ),
           const SizedBox(height: 20),
           TextFormField(
+            controller: controller.password,
             cursorColor: Theme.of(context).hintColor,
             style: textDarkGrayTextStyle,
             obscureText: true,
@@ -65,9 +67,8 @@ class LoginForm extends Container {
           const SizedBox(height: 40),
           ElevatedButton(
             style: buttonBlueStyle,
-            onPressed: () {
-              ToastUtils.initFToast(context);
-              ToastUtils.showWarningToast(context, 'Success Message', 2);
+            onPressed: () async {
+              await LoginRepository.login(controller.username.text, controller.password.text, context);
             },
             child: Text('getIn'.tr, style: textDarkGrayTextStyle,),
           ),
