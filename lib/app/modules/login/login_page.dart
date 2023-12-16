@@ -16,56 +16,57 @@ class LoginPage extends GetView<LoginController> {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       body: Center(
-        child: Stack(
-          alignment: Alignment.topCenter,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(top: 50.0),
-              child: Card(
-                color: Colors.white,
-                margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.35, right: MediaQuery.of(context).size.width * 0.35),
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(20.0, 50.0, 20.0, 20.0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      const SizedBox(height: 40), 
-                      Text('login'.tr, style: title1TextStyle,),
-                      const SizedBox(height: 40),
-                      LoginForm(),
-                      const SizedBox(height: 20),
-                      TextButton(
-                        child: Text('forgotPass'.tr, style: textDarkGrayTextStyle),
-                        onPressed: () {
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Stack(
+              alignment: Alignment.topCenter,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(top: 50.0),
+                  child: Card(
+                    color: Colors.white,
+                    margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.35, right: MediaQuery.of(context).size.width * 0.35),
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(20.0, 50.0, 20.0, 20.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          const SizedBox(height: 40), 
+                          Text('login'.tr, style: title1TextStyle,),
+                          const SizedBox(height: 40),
+                          LoginForm(),
+                          const SizedBox(height: 20),
+                          TextButton(
+                            child: Text('forgotPass'.tr, style: textDarkGrayTextStyle),
+                            onPressed: () {
 
-                        },
+                            },
+                          ),
+                          TextButton(
+                            child: Text('notAccount'.tr, style: textDarkGrayTextStyle,),
+                            onPressed: () {
+                              Get.toNamed(Routes.register);
+                            },
+                          ),
+                          Image.asset(
+                            'assets/logo_flightline.png',
+                            width: 100,
+                            height: 100,
+                          ),
+                        ],
                       ),
-                      TextButton(
-                        child: Text('notAccount'.tr, style: textDarkGrayTextStyle,),
-                        onPressed: () {
-                          Get.toNamed(Routes.register);
-                        },
-                      ),
-                      Image.asset(
-                        'assets/logo_flightline.png',
-                        width: 100,
-                        height: 100,
-                      ),
-                    ],
+                    ),
                   ),
                 ),
-              ),
+                CircleAvatar(
+                  radius: 50.0,
+                  backgroundColor: Theme.of(context).primaryColor,
+                  child: const Icon(Icons.person, size: 70.0, color: Colors.white,),
+                ),
+              ],
             ),
-            Positioned(
-              top: 0, 
-              right: 100, 
-              child: buildLanguageDropdown(),
-            ),
-            CircleAvatar(
-              radius: 50.0,
-              backgroundColor: Theme.of(context).primaryColor,
-              child: const Icon(Icons.person, size: 70.0, color: Colors.white,),
-            ),
+            buildLanguageDropdown(),
           ],
         ),
       ),

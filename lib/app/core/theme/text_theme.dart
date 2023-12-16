@@ -14,6 +14,12 @@ const TextStyle textDarkGrayTextStyle = TextStyle(
   color: Color(0xFFCBC8C8),
 );
 
+const TextStyle textWhiteTextStyle = TextStyle(
+  fontFamily: 'Agrandir',
+  fontSize: 16,
+  color: Colors.white,
+);
+
 const TextStyle textOrangeTextStyle = TextStyle(
   fontFamily: 'Agrandir',
   fontSize: 16,

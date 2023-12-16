@@ -8,7 +8,7 @@ import 'package:tfg_frontend/app/routes/app_pages.dart';
 import 'package:tfg_frontend/app/translations/app_translations.dart';
 
 Future<void> main() async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
+  SharedPreferences prefs = await SharedPreferences.getInstance();  
   
   runApp(
     GetMaterialApp(

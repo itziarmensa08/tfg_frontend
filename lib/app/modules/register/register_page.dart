@@ -15,52 +15,55 @@ class RegisterPage extends GetView<RegisterController> {
 
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
-      body: Center(
-        child: Stack(
-          alignment: Alignment.topCenter,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(top: 50.0),
-              child: Card(
-                color: Colors.white,
-                margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.35, right: MediaQuery.of(context).size.width * 0.35),
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(20.0, 50.0, 20.0, 20.0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      const SizedBox(height: 40), 
-                      Text('register'.tr, style: title1TextStyle,),
-                      const SizedBox(height: 40),
-                      RegisterForm(),
-                      const SizedBox(height: 20),
-                      TextButton(
-                        child: Text('alreadyAccount'.tr, style: textDarkGrayTextStyle,),
-                        onPressed: () {
-                          Get.toNamed(Routes.login);
-                        },
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Stack(
+                alignment: Alignment.topCenter,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(top: 50.0),
+                    child: Card(
+                      color: Colors.white,
+                      margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.35, right: MediaQuery.of(context).size.width * 0.35),
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(20.0, 50.0, 20.0, 20.0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            const SizedBox(height: 40), 
+                            Text('register'.tr, style: title1TextStyle,),
+                            const SizedBox(height: 40),
+                            RegisterForm(),
+                            const SizedBox(height: 20),
+                            TextButton(
+                              child: Text('alreadyAccount'.tr, style: textDarkGrayTextStyle,),
+                              onPressed: () {
+                                Get.toNamed(Routes.login);
+                              },
+                            ),
+                            Image.asset(
+                              'assets/logo_flightline.png',
+                              width: 100,
+                              height: 100,
+                            ),
+                          ],
+                        ),
                       ),
-                      Image.asset(
-                        'assets/logo_flightline.png',
-                        width: 100,
-                        height: 100,
-                      ),
-                    ],
+                    ),
                   ),
-                ),
+                  CircleAvatar(
+                    radius: 50.0,
+                    backgroundColor: Theme.of(context).primaryColor,
+                    child: const Icon(Icons.person, size: 70.0, color: Colors.white,),
+                  ),
+                ],
               ),
-            ),
-            CircleAvatar(
-              radius: 50.0,
-              backgroundColor: Theme.of(context).primaryColor,
-              child: const Icon(Icons.person, size: 70.0, color: Colors.white,),
-            ),
-            Positioned(
-              top: 0,
-              right: 100,
-              child: buildLanguageDropdown(),
-            ),
-          ],
+              buildLanguageDropdown(),
+            ],
+          ),
         ),
       ),
     );
