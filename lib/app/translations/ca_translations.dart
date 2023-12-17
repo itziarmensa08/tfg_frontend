@@ -27,5 +27,9 @@ final Map<String, String> ca = {
   'Already user': 'Ja existeix un usuari amb aquest correu electrònic',
   'Username not available': 'Nom d\'usuari no disponible',
   'Email not valid': 'Introdueix un email valid (flightlinebcn.com)',
-  'Invalid password': 'La contrsenya com a mínim ha de tenir 7 caràcters',
+  'Invalid password': 'La contrasenya com a mínim ha de tenir 7 caràcters',
+  'enterText': 'Si us plau, introdueix algun text',
+  'equalPass': 'Les contrasenyes no coincideixen',
+  'longPass': 'La contrasenya ha de tenir almenys 7 caràcters',
+  'validEmail': 'Si us plau, introdueix un email valid (flightlinebcn.com)'
 };

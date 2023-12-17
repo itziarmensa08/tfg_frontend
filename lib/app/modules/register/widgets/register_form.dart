@@ -11,6 +11,36 @@ class RegisterForm extends Container {
 
   RegisterForm({super.key});
 
+  String? textValidator (String? value) {
+    if (value == null || value.isEmpty) {
+      return 'enterText'.tr;
+    }
+    return null;
+  }
+
+  String? passwordValidator (String? value1, String? value2) {
+    if (value1 == null || value1.isEmpty)  {
+      return 'enterText'.tr;
+    } else if (value1.length < 7)  {
+      return 'longPass'.tr;
+    } else if (value1 != value2) {
+      return 'equalPass'.tr;
+    }
+    return null;
+  }
+
+  String? emailValidator(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'enterText'.tr; 
+    } else {
+      const pattern = r'\b[A-Za-z0-9._%+-]+@flightlinebcn\.com\b';
+      if (!RegExp(pattern).hasMatch(value)) {
+        return 'validEmail'.tr;
+      }
+    }
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -39,6 +69,7 @@ class RegisterForm extends Container {
               ),
               suffixIcon: const Icon(Icons.person, color: Color(0xFFCBC8C8),),
             ),
+            validator: (value) => textValidator(value),
           ),
           const SizedBox(height: 20),
           TextFormField(
@@ -63,6 +94,7 @@ class RegisterForm extends Container {
               ),
               suffixIcon: const Icon(Icons.person, color: Color(0xFFCBC8C8),),
             ),
+            validator: (value) => textValidator(value),
           ),
           const SizedBox(height: 20),
           TextFormField(
@@ -87,6 +119,7 @@ class RegisterForm extends Container {
               ),
               suffixIcon: const Icon(Icons.person, color: Color(0xFFCBC8C8),),
             ),
+            validator: (value) => textValidator(value),
           ),
           const SizedBox(height: 20),
           TextFormField(
@@ -111,6 +144,7 @@ class RegisterForm extends Container {
               ),
               suffixIcon: const Icon(Icons.email, color: Color(0xFFCBC8C8),),
             ),
+            validator: (value) => emailValidator(value),
           ),
           const SizedBox(height: 20),
           TextFormField(
@@ -136,6 +170,7 @@ class RegisterForm extends Container {
               ),
               suffixIcon: const Icon(Icons.key, color: Color(0xFFCBC8C8),)
             ),
+            validator: (value) => passwordValidator(value, controller.password2.text),
           ),
           const SizedBox(height: 20),
           TextFormField(
@@ -161,21 +196,24 @@ class RegisterForm extends Container {
               ),
               suffixIcon: const Icon(Icons.key, color: Color(0xFFCBC8C8),)
             ),
+            validator: (value) => passwordValidator(value, controller.password1.text),
           ),
           const SizedBox(height: 40),
           ElevatedButton(
             style: buttonBlueStyle,
             onPressed: () async {
-              UserModel user = UserModel(
-                name: controller.name.text, 
-                surname: controller.surname.text, 
-                username: controller.username.text, 
-                email: controller.email.text,
-                password: controller.password1.text,
-                role: 'user',
-              );
+              if (_formKey.currentState!.validate()) {
+                UserModel user = UserModel(
+                  name: controller.name.text, 
+                  surname: controller.surname.text, 
+                  username: controller.username.text, 
+                  email: controller.email.text,
+                  password: controller.password1.text,
+                  role: 'user',
+                );
 
-              await RegisterRepository.register(user, context);
+                await RegisterRepository.register(user, context);
+              }
             },
             child: Text('putRegister'.tr, style: textDarkGrayTextStyle,),
           ),

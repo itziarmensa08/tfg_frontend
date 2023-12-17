@@ -2,7 +2,6 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tfg_frontend/app/core/utils/helpers/toast.dart';
 import 'package:tfg_frontend/app/data/model/user_model.dart';
@@ -14,7 +13,7 @@ final MyApi api;
 
 LoginRepository(this.api);
 
-  static Future<void> login(String? username, String? password, BuildContext context) async {
+  static Future<String?> login(String? username, String? password, BuildContext context) async {
     ApiResponse response;
     ToastUtils.initFToast(context);
 
@@ -33,13 +32,14 @@ LoginRepository(this.api);
         SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.setString('token', data['token']);
         prefs.setString('id', userModel.id!);
-
       } else {
-        ToastUtils.showErrorToast(context, '${response.data}'.tr);
+        return response.data;
       }
+      
     } catch (error) {
       ToastUtils.showErrorToast(context, 'Error Login: $error');
     }
+    return null;
   }
 
 }

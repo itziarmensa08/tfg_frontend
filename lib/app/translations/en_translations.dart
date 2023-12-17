@@ -28,4 +28,8 @@ final Map<String, String> en = {
   'Username not available': 'Username not available',
   'Email not valid': 'Enter a valid email (flightlinebcn.com)',
   'Invalid password': 'The password must have at least 7 characters',
+  'enterText': "Please enter some text",
+  'equalPass': "Passwords do not match",
+  'longPass': "Password must be at least 7 characters long",
+  'validEmail': "Please enter a valid email (flightlinebcn.com)",
 };
