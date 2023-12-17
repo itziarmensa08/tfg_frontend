@@ -25,13 +25,13 @@ RegisterRepository(this.api);
       );
 
       if (response.statusCode == 201) {
-        ToastUtils.showSuccessToast(context, 'Success Register', 2);
+        ToastUtils.showSuccessToast(context, 'Success Register');
         Get.toNamed(Routes.login);
       } else {
-        ToastUtils.showErrorToast(context, 'Error Register: ${response.statusCode}', 2);
+        ToastUtils.showErrorToast(context, '${response.data}'.tr);
       }
     } catch (error) {
-      ToastUtils.showErrorToast(context, 'Error Register: $error', 2);
+      ToastUtils.showErrorToast(context, 'Error Register: $error');
     }
   }
 

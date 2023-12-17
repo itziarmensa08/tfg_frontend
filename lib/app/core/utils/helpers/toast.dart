@@ -10,16 +10,16 @@ class ToastUtils {
     _fToast = FToast().init(context);
   }
 
-  static void showSuccessToast(BuildContext context, String message, int seconds) {
-    _showToast(context, message, Colors.green, Icons.check, seconds);
+  static void showSuccessToast(BuildContext context, String message) {
+    _showToast(context, message, Colors.green, Icons.check, 2);
   }
 
-  static void showErrorToast(BuildContext context, String message, int seconds) {
-    _showToast(context, message, Colors.red, Icons.error, seconds);
+  static void showErrorToast(BuildContext context, String message) {
+    _showToast(context, message, Colors.red, Icons.error, 3);
   }
 
-  static void showWarningToast(BuildContext context, String message, int seconds) {
-    _showToast(context, message, Colors.orange, Icons.warning, seconds);
+  static void showWarningToast(BuildContext context, String message) {
+    _showToast(context, message, Colors.orange, Icons.warning, 3);
   }
 
   static void _showToast(BuildContext context, String message, Color backgroundColor, IconData icon, int seconds) {

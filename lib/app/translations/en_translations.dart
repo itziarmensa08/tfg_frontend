@@ -13,6 +13,8 @@ final Map<String, String> en = {
   'username': 'Username',
   'pass': 'Password',
   'getIn': 'GET IN',
+  'Not found user': 'No user with this username exists',
+  'Incorrect password': 'Incorrect password',
 
   //Register
   'email': 'Email',
@@ -20,4 +22,10 @@ final Map<String, String> en = {
   'register': 'Register',
   'putRegister': 'REGISTER',
   'alreadyAccount': 'Have you compte? Log in',
+  'name': 'Name',
+  'surname': 'Surname',
+  'Already user': 'There is already a user with this email',
+  'Username not available': 'Username not available',
+  'Email not valid': 'Enter a valid email (flightlinebcn.com)',
+  'Invalid password': 'The password must have at least 7 characters',
 };

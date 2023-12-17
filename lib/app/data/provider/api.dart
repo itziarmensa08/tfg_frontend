@@ -11,7 +11,7 @@ final optHeader = {
 
 class ApiResponse {
   int statusCode;
-  Map<String, dynamic> data;
+  dynamic data;
   ApiResponse({required this.data, required this.statusCode});
 }
 
@@ -30,7 +30,7 @@ class MyApi {
 
   Future<ApiResponse> post(String path, {Map<String, dynamic> data = const {}}) async {
 
-    ApiResponse res = ApiResponse(data: {}, statusCode: -1);;
+    ApiResponse res = ApiResponse(data: {}, statusCode: -1);
 
     try {
 
@@ -48,12 +48,22 @@ class MyApi {
       );
 
       res.statusCode = response.statusCode;
-      res.data = jsonDecode(response.body) as Map<String, dynamic>? ?? {};
+
+      try {
+        res.data = jsonDecode(response.body);
+      } catch (e) {
+        res.data = response.body;
+      }
       
       return res;
+
     } catch (e) {
+
       log('Error in post: $e');
+      res.data = 'Error in post: $e';
+      
       return res;
+
     }
   }
 
