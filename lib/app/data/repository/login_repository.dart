@@ -32,8 +32,12 @@ LoginRepository(this.api);
         SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.setString('token', data['token']);
         prefs.setString('id', userModel.id!);
-      } else {
+
+      } else if (response.statusCode == 404 ||  response.statusCode == 400) {
         return response.data;
+
+      } else {
+        ToastUtils.showErrorToast(context, response.data);
       }
       
     } catch (error) {
