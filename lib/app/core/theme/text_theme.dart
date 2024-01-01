@@ -8,6 +8,12 @@ const TextStyle title1TextStyle = TextStyle(
   color: Color(0xFFF3720A),
 );
 
+const TextStyle titleWhiteTextStyle = TextStyle(
+  fontFamily: 'Agrandir',
+  fontSize: 24,
+  color: Colors.white,
+);
+
 const TextStyle textDarkGrayTextStyle = TextStyle(
   fontFamily: 'Agrandir',
   fontSize: 16,
@@ -18,6 +24,12 @@ const TextStyle textWhiteTextStyle = TextStyle(
   fontFamily: 'Agrandir',
   fontSize: 16,
   color: Colors.white,
+);
+
+const TextStyle textBlackTextStyle = TextStyle(
+  fontFamily: 'Agrandir',
+  fontSize: 16,
+  color: Colors.black,
 );
 
 const TextStyle textOrangeTextStyle = TextStyle(

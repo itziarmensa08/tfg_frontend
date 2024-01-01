@@ -32,6 +32,12 @@ LoginRepository(this.api);
         SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.setString('token', data['token']);
         prefs.setString('id', userModel.id!);
+        if (userModel.role == 'admin') {
+          prefs.setBool('isAdmin', true);
+        } else {
+          prefs.setBool('isAdmin', false);
+        }
+        return response.statusCode.toString();
 
       } else if (response.statusCode == 404 ||  response.statusCode == 400) {
         return response.data;

@@ -32,4 +32,13 @@ final Map<String, String> en = {
   'equalPass': "Passwords do not match",
   'longPass': "Password must be at least 7 characters long",
   'validEmail': "Please enter a valid email (flightlinebcn.com)",
+
+  //Home
+  'EOSIDcalculation': 'EOSID calculation',
+  'home': 'Home',
+  'profile': 'Profile',
+  'newAnalisis': 'New analysis',
+  'tasks': 'Tasks',
+  'admin': 'Administrator',
+  'settings': 'Settings',
 };

@@ -7,6 +7,8 @@ import 'package:tfg_frontend/app/data/repository/login_repository.dart';
 import 'package:tfg_frontend/app/modules/login/login_controller.dart';
 import 'dart:async';
 
+import 'package:tfg_frontend/app/routes/app_pages.dart';
+
 
 class LoginForm extends Container {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -120,7 +122,10 @@ class LoginForm extends Container {
               validateUsername = await validatorUsername(controller.username.text, context);
               validatePassword = await validatorPassword(controller.password.text, context);
               if (_formKey.currentState!.validate()) {
-                await LoginRepository.login(controller.username.text, controller.password.text, context);
+                var login = await LoginRepository.login(controller.username.text, controller.password.text, context);
+                if (login == '200') {
+                  Get.toNamed(Routes.home);
+                }
               }              
             },
             child: Text('getIn'.tr, style: textDarkGrayTextStyle,),

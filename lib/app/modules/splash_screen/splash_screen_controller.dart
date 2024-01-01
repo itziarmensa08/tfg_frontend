@@ -14,7 +14,7 @@ class SplashScreenController extends GetxController {
     isUserLoggedIn.value = await repository.getUser();
     
     if (isUserLoggedIn.value == true) {
-      Get.toNamed(Routes.listProcedures);
+      Get.toNamed(Routes.home);
     } else {
       Get.toNamed(Routes.login);
     }

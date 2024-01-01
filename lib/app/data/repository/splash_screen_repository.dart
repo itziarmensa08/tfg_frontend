@@ -6,7 +6,7 @@ SplashScreenRepository();
 
   getUser() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? userId = prefs.getString('userId');
+    String? userId = prefs.getString('id');
     await Future.delayed(const Duration(seconds: 2));
     if (userId != null) {
       return true;
