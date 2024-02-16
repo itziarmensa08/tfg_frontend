@@ -41,4 +41,10 @@ final Map<String, String> es = {
   'tasks': 'Tareas',
   'admin': 'Administrador',
   'settings': 'Configuración',
+
+  //Admin page
+  'dashboard': 'Panel de administrador',
+  'users': 'Usuarios',
+  'aircrafts': 'Aeronaves',
+  'airports': 'Aeropuertos'
 };

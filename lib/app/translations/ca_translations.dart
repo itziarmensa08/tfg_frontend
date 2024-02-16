@@ -41,4 +41,10 @@ final Map<String, String> ca = {
   'tasks': 'Tasques',
   'admin': 'Administrador',
   'settings': 'Configuració',
+
+  //Admin page
+  'dashboard': 'Panell d\'administrador',
+  'users': 'Usuaris',
+  'aircrafts': 'Aeronaus',
+  'airports': 'Aeroports'
 };

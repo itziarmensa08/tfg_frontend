@@ -4,6 +4,7 @@ import 'package:tfg_frontend/app/core/theme/color_theme.dart';
 import 'package:tfg_frontend/app/core/theme/text_theme.dart';
 import 'package:tfg_frontend/app/modules/home/home_controller.dart';
 import 'package:easy_sidemenu/easy_sidemenu.dart';
+import 'package:tfg_frontend/app/modules/home/widgets/admin_dashboard.dart';
 import 'package:tfg_frontend/app/modules/home/widgets/list_sidemenu.dart';
 
 class HomePage extends GetView<HomeController> {
@@ -102,12 +103,7 @@ class HomePage extends GetView<HomeController> {
                 Container(),
                 Container(
                   color: Theme.of(context).colorScheme.background,
-                  child: const Center(
-                    child: Text(
-                      'Administrador',
-                      style: TextStyle(fontSize: 35),
-                    ),
-                  ),
+                  child: const AdminDashboard(),
                 ),
                 Container(
                   color: Theme.of(context).colorScheme.background,
