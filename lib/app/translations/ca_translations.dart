@@ -49,5 +49,16 @@ final Map<String, String> ca = {
   'airports': 'Aeroports',
   'usersList': 'Llista d\'usuaris',
   'aircraftsList': 'Llista d\'aeronaus',
-  'airportsList': 'Llista d\'aeroports'
+  'airportsList': 'Llista d\'aeroports',
+
+  //Users
+  'rol': 'Rol',
+  'telephone': 'Telèfon',
+  'dateBorn': 'Data de naixement',
+  'notSpecified': 'No especificat',
+  'userDeleted': 'Usuari borrat correctament',
+  'deleteUser': 'Eliminar usuari',
+  'confirmDeleteUser': 'Estàs segur que vols borrar aquest usuari?',
+  'yes': 'Si',
+  'no': 'No'
 };

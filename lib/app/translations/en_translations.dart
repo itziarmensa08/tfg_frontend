@@ -49,5 +49,16 @@ final Map<String, String> en = {
   'airports': 'Airports',
   'usersList': 'Users list',
   'aircraftsList': 'Aircrafts list',
-  'airportsList': 'Airports list'
+  'airportsList': 'Airports list',
+
+  //Users
+  'rol': 'Role',
+  'telephone': 'Telephone',
+  'dateBorn': 'Date born',
+  'notSpecified': 'No specified',
+  'userDeleted': 'User deleted successfully',
+  'deleteUser': 'Delete user',
+  'confirmDeleteUser': 'Are you sure you want to delete this user?',
+  'yes': 'Yes',
+  'no': 'No'
 };

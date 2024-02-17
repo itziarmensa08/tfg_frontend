@@ -49,5 +49,16 @@ final Map<String, String> es = {
   'airports': 'Aeropuertos',
   'usersList': 'Lista de usuarios',
   'aircraftsList': 'Lista de aeronaves',
-  'airportsList': 'Lista de aeropuertos'
+  'airportsList': 'Lista de aeropuertos',
+
+  //Users
+  'rol': 'Rol',
+  'telephone': 'Teléfono',
+  'dateBorn': 'Fecha de nacimiento',
+  'notSpecified': 'No especificado',
+  'userDeleted': 'Usuario borrado correctamente',
+  'deleteUser': 'Eliminar usuario',
+  'confirmDeleteUser': '¿Estás seguro de que quieres borrar ese usuario?',
+  'yes': 'Si',
+  'no': 'No'
 };
