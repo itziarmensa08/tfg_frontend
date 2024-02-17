@@ -46,5 +46,8 @@ final Map<String, String> ca = {
   'dashboard': 'Panell d\'administrador',
   'users': 'Usuaris',
   'aircrafts': 'Aeronaus',
-  'airports': 'Aeroports'
+  'airports': 'Aeroports',
+  'usersList': 'Llista d\'usuaris',
+  'aircraftsList': 'Llista d\'aeronaus',
+  'airportsList': 'Llista d\'aeroports'
 };

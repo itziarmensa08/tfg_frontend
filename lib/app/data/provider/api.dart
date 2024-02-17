@@ -67,5 +67,43 @@ class MyApi {
     }
   }
 
+  Future<ApiResponse> get(String path) async {
+
+    ApiResponse res = ApiResponse(data: {}, statusCode: -1);
+
+    try {
+
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String? token = prefs.getString('token');
+
+      if (token != null) {
+        optHeader['Authorization'] = 'Bearer $token';
+      }
+
+      final response = await client.get(
+        "${Endpoints.ipApi}$path".toUri(),
+        headers: optHeader,
+      );
+
+      res.statusCode = response.statusCode;
+
+      try {
+        res.data = jsonDecode(response.body);
+      } catch (e) {
+        res.data = response.body;
+      }
+      
+      return res;
+
+    } catch (e) {
+
+      log('Error in get: $e');
+      res.data = 'Error in get: $e';
+      
+      return res;
+
+    }
+  }
+
   
 }

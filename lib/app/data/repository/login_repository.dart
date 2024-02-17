@@ -9,9 +9,9 @@ import 'package:tfg_frontend/app/data/provider/api.dart';
 
 class LoginRepository {
 
-final MyApi api;
+  final MyApi api;
 
-LoginRepository(this.api);
+  LoginRepository(this.api);
 
   static Future<String?> login(String? username, String? password, BuildContext context) async {
     ApiResponse response;

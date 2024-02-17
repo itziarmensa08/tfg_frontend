@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tfg_frontend/app/core/theme/color_theme.dart';
 import 'package:tfg_frontend/app/core/theme/text_theme.dart';
+import 'package:tfg_frontend/app/data/provider/api.dart';
+import 'package:tfg_frontend/app/data/repository/home_repository.dart';
+import 'package:tfg_frontend/app/modules/home/home_controller.dart';
 
 class AdminDashboard extends StatelessWidget {
-  const AdminDashboard({Key? key}) : super(key: key);
+  AdminDashboard({Key? key}) : super(key: key);
+  final HomeController controllerHome = Get.put(HomeController(HomeRepository(MyApi())));
 
   @override
   Widget build(BuildContext context) {
@@ -28,24 +32,26 @@ class AdminDashboard extends StatelessWidget {
                   title: 'users'.tr,
                   icon: Icons.people,
                   onTap: () {
-                    // Acción cuando se presiona la tarjeta de usuarios
+                    controllerHome.seeAdmin.value = false;
+                    controllerHome.seeUsers.value = true;
                   },
                 ),
                 DashboardCard(
                   title: 'aircrafts'.tr,
                   icon: Icons.airplanemode_active,
                   onTap: () {
-                    // Acción cuando se presiona la tarjeta de aeronaves
+                    controllerHome.seeAdmin.value = false;
+                    controllerHome.seeAircrafts.value = true;
                   },
                 ),
                 DashboardCard(
                   title: 'airports'.tr,
                   icon: Icons.location_city,
                   onTap: () {
-                    // Acción cuando se presiona la tarjeta de aeropuertos
+                    controllerHome.seeAdmin.value = false;
+                    controllerHome.seeAirports.value = true;
                   },
                 ),
-                // Puedes agregar más tarjetas aquí según tus necesidades
               ],
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.1),

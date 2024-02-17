@@ -5,7 +5,10 @@ import 'package:tfg_frontend/app/core/theme/text_theme.dart';
 import 'package:tfg_frontend/app/modules/home/home_controller.dart';
 import 'package:easy_sidemenu/easy_sidemenu.dart';
 import 'package:tfg_frontend/app/modules/home/widgets/admin_dashboard.dart';
+import 'package:tfg_frontend/app/modules/home/widgets/aircrafts.dart';
+import 'package:tfg_frontend/app/modules/home/widgets/airports.dart';
 import 'package:tfg_frontend/app/modules/home/widgets/list_sidemenu.dart';
+import 'package:tfg_frontend/app/modules/home/widgets/users.dart';
 
 class HomePage extends GetView<HomeController> {
   const HomePage({super.key});
@@ -103,7 +106,19 @@ class HomePage extends GetView<HomeController> {
                 Container(),
                 Container(
                   color: Theme.of(context).colorScheme.background,
-                  child: const AdminDashboard(),
+                  child: Obx(() {
+                    if (controller.seeAdmin.value) {
+                      return AdminDashboard();
+                    } else if (controller.seeUsers.value) {
+                      return UserList(users: controller.users);
+                    } else if (controller.seeAircrafts.value) {
+                      return const AircraftsList();
+                    } else if (controller.seeAirports.value) {
+                      return const AirportsList();
+                    } else {
+                      return const Text('Cargando ...');
+                    }
+                  },)
                 ),
                 Container(
                   color: Theme.of(context).colorScheme.background,

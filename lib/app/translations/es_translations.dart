@@ -46,5 +46,8 @@ final Map<String, String> es = {
   'dashboard': 'Panel de administrador',
   'users': 'Usuarios',
   'aircrafts': 'Aeronaves',
-  'airports': 'Aeropuertos'
+  'airports': 'Aeropuertos',
+  'usersList': 'Lista de usuarios',
+  'aircraftsList': 'Lista de aeronaves',
+  'airportsList': 'Lista de aeropuertos'
 };

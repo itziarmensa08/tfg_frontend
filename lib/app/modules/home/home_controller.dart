@@ -1,6 +1,7 @@
 import 'package:easy_sidemenu/easy_sidemenu.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tfg_frontend/app/data/model/user_model.dart';
 import 'package:tfg_frontend/app/data/repository/home_repository.dart';
 
 class HomeController extends GetxController {
@@ -12,4 +13,12 @@ class HomeController extends GetxController {
   SideMenuController sideMenu = SideMenuController();
 
   RxBool isAdmin = RxBool(false);
+
+  RxBool seeAdmin = RxBool(true);
+  RxBool seeUsers = RxBool(false);
+  RxBool seeAircrafts = RxBool(false);
+  RxBool seeAirports = RxBool(false);
+
+  RxList<UserModel> users = <UserModel>[].obs;
+
 }

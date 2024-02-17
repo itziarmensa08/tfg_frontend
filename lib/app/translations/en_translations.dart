@@ -46,5 +46,8 @@ final Map<String, String> en = {
   'dashboard': 'Administrator dashboard',
   'users': 'Users',
   'aircrafts': 'Aircrafts',
-  'airports': 'Airports'
+  'airports': 'Airports',
+  'usersList': 'Users list',
+  'aircraftsList': 'Aircrafts list',
+  'airportsList': 'Airports list'
 };

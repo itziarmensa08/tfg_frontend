@@ -44,6 +44,10 @@ List<SideMenuItem> buildSideMenuItems(controller) {
       SideMenuItem(
         title: 'admin'.tr,
         onTap: (index, _) {
+          controller.seeAdmin.value = true;
+          controller.seeAircrafts.value = false;
+          controller.seeUsers.value = false;
+          controller.seeAirports.value = false;
           controller.sideMenu.changePage(index);
         },
         icon: const Icon(Icons.admin_panel_settings),
