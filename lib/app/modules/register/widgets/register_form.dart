@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tfg_frontend/app/core/theme/text_theme.dart';
 import 'package:tfg_frontend/app/data/model/user_model.dart';
 import 'package:tfg_frontend/app/data/repository/register_repository.dart';
@@ -203,6 +204,7 @@ class RegisterForm extends Container {
             style: buttonBlueStyle,
             onPressed: () async {
               if (_formKey.currentState!.validate()) {
+                SharedPreferences prefs = await SharedPreferences.getInstance(); 
                 UserModel user = UserModel(
                   name: controller.name.text, 
                   surname: controller.surname.text, 
@@ -210,8 +212,10 @@ class RegisterForm extends Container {
                   email: controller.email.text,
                   password: controller.password1.text,
                   role: 'user',
+                  language: prefs.getString('language') ?? 'es'
                 );
 
+                // ignore: use_build_context_synchronously
                 await RegisterRepository.register(user, context);
               }
             },

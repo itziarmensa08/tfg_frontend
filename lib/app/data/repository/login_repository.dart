@@ -32,6 +32,7 @@ class LoginRepository {
         SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.setString('token', data['token']);
         prefs.setString('id', userModel.id!);
+        prefs.setString('language', userModel.language!);
         if (userModel.role == 'admin') {
           prefs.setBool('isAdmin', true);
         } else {

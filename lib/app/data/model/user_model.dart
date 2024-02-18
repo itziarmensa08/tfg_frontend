@@ -10,6 +10,8 @@ class UserModel {
   String? role;
   int? telephone;
   DateTime? dateBorn;
+  String? profileImage;
+  String? language;
 
   UserModel(
     { 
@@ -22,6 +24,8 @@ class UserModel {
       this.role,
       this.telephone,
       this.dateBorn,
+      this.profileImage,
+      this.language
     }
   );
 
@@ -35,6 +39,8 @@ class UserModel {
     id = json['_id']?.toString();
     telephone = json['telephone'];
     dateBorn = json['dateBorn'] != null ? DateTime.parse(json['dateBorn']) : null;
+    profileImage = json['profileImage']?.toString();
+    language = json['language']?.toString();
   }
 
   Map<String, dynamic> toJson(){
@@ -47,7 +53,13 @@ class UserModel {
     data['role'] = role;
     data['_id'] = id;
     data['telephone'] = telephone;
-    data['dateBorn'] = dateBorn!.toIso8601String();
+    if (dateBorn != null) {
+      data['dateBorn'] = dateBorn!.toIso8601String();
+    } else {
+      data['dateBorn'] = dateBorn;
+    }
+    data['profileImage'] = profileImage;
+    data['language'] = language;
     return data;
   }
 }

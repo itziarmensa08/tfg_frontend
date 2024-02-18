@@ -5,6 +5,7 @@ final Map<String, String> ca = {
   'en_US': 'Anglès',
   'ca': 'Català',
   'es': 'Espanyol',
+  'language': 'Llengua',
 
   //LoginPage
   'login': 'Inici de sessió',

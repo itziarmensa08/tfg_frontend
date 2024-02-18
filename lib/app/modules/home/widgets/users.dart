@@ -42,6 +42,8 @@ class UserList extends StatelessWidget {
               telephone: '${users[index].telephone}' == 'null' ? 'notSpecified'.tr : '${users[index].telephone}',
               prefixBorn: '${'dateBorn'.tr}: ',
               dateBorn: '${users[index].dateBorn}' == 'null' ? 'notSpecified'.tr : '${users[index].dateBorn}',
+              prefixLang: '${'language'.tr}: ',
+              lang: '${users[index].language}'.tr,
               icon: Icons.person,
             );
           },

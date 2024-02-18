@@ -24,6 +24,8 @@ class UserCard extends StatefulWidget {
   final String telephone;
   final String prefixBorn;
   final String dateBorn;
+  final String prefixLang;
+  final String lang;
   final IconData icon;
 
   UserCard({
@@ -39,6 +41,8 @@ class UserCard extends StatefulWidget {
     required this.telephone,
     required this.prefixBorn,
     required this.dateBorn,
+    required this.prefixLang,
+    required this.lang,
     required this.icon,
     Key? key,
   }) : super(key: key);
@@ -160,9 +164,17 @@ class _UserCardState extends State<UserCard> {
                             ],
                           ),
                           const SizedBox(height: 20),
-                          const Text(
-                            '',
-                            style: textWhiteTextStyle
+                          Row(
+                            children: [
+                              Text(
+                                widget.prefixLang,
+                                style: textWhiteTextStyle.copyWith(fontWeight: FontWeight.bold)
+                              ),
+                              Text(
+                                widget.lang,
+                                style: textWhiteTextStyle
+                              ),
+                            ],
                           ),
                         ],
                       ),
