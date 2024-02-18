@@ -105,7 +105,7 @@ class MyApi {
     }
   }
 
-  Future<ApiResponse> delete(String path, String id) async {
+  Future<ApiResponse> delete(String path) async {
 
     ApiResponse res = ApiResponse(data: {}, statusCode: -1);
 
@@ -119,7 +119,7 @@ class MyApi {
       }
 
       final response = await client.delete(
-        "${Endpoints.ipApi}$path/$id".toUri(),
+        "${Endpoints.ipApi}$path".toUri(),
         headers: optHeader,
       );
 
@@ -137,6 +137,45 @@ class MyApi {
 
       log('Error in delete: $e');
       res.data = 'Error in delete: $e';
+      
+      return res;
+
+    }
+  }
+
+  Future<ApiResponse> put(String path, {Map<String, dynamic> data = const {}}) async {
+
+    ApiResponse res = ApiResponse(data: {}, statusCode: -1);
+
+    try {
+
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String? token = prefs.getString('token');
+
+      if (token != null) {
+        optHeader['Authorization'] = 'Bearer $token';
+      }
+
+      final response = await client.put(
+        "${Endpoints.ipApi}$path".toUri(),
+        body: jsonEncode(data),
+        headers: optHeader,
+      );
+
+      res.statusCode = response.statusCode;
+
+      try {
+        res.data = jsonDecode(response.body);
+      } catch (e) {
+        res.data = response.body;
+      }
+      
+      return res;
+
+    } catch (e) {
+
+      log('Error in put: $e');
+      res.data = 'Error in put: $e';
       
       return res;
 

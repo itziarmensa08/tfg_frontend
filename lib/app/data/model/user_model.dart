@@ -33,7 +33,7 @@ class UserModel {
     password = json['password']?.toString();
     role = json['role']?.toString();
     id = json['_id']?.toString();
-    telephone = json['telephone'] != null ? int.tryParse(json['telephone']) : null;
+    telephone = json['telephone'];
     dateBorn = json['dateBorn'] != null ? DateTime.parse(json['dateBorn']) : null;
   }
 
@@ -47,7 +47,7 @@ class UserModel {
     data['role'] = role;
     data['_id'] = id;
     data['telephone'] = telephone;
-    data['dateBorn'] = dateBorn;
+    data['dateBorn'] = dateBorn!.toIso8601String();
     return data;
   }
 }

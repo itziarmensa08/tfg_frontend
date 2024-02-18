@@ -60,5 +60,10 @@ final Map<String, String> en = {
   'deleteUser': 'Delete user',
   'confirmDeleteUser': 'Are you sure you want to delete this user?',
   'yes': 'Yes',
-  'no': 'No'
+  'no': 'No',
+
+  //Edit user
+  'editUser': 'Edit user',
+  'invalidPhone': 'Invalid phone',
+  'editUserSuccess': 'User updated successfully'
 };

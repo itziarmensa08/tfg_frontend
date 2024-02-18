@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:tfg_frontend/app/modules/edit-user/edit_user_binding.dart';
+import 'package:tfg_frontend/app/modules/edit-user/edit_user_page.dart';
 import 'package:tfg_frontend/app/modules/home/home_binding.dart';
 import 'package:tfg_frontend/app/modules/home/home_page.dart';
 import 'package:tfg_frontend/app/modules/login/login_binding.dart';
@@ -31,6 +33,12 @@ abstract class AppPages {
       name: Routes.home, 
       page: ()=> const HomePage(), 
       binding: HomeBinding() 
+    ),
+    GetPage(
+      name: Routes.editUser, 
+      page:()=> const EditUserPage(), 
+      binding: EditUserBinding(),
+      transition: Transition.downToUp
     ),
   ];
 }

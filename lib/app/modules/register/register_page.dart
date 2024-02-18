@@ -20,7 +20,7 @@ class RegisterPage extends GetView<RegisterController> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const SizedBox(height: 40,),
+              const SizedBox(height: 40),
               Stack(
                 alignment: Alignment.topCenter,
                 children: <Widget>[
