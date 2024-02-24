@@ -128,7 +128,7 @@ class LoginForm extends Container {
                 }
               }              
             },
-            child: Text('getIn'.tr, style: textDarkGrayTextStyle,),
+            child: Text('getIn'.tr, style: textWhiteTextStyle),
           ),
         ],
       )

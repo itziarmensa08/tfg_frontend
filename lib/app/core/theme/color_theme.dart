@@ -10,3 +10,5 @@ const blue = Color(0xFF10619A);
 const orange = Color(0xFFF3720A);
 
 const orangeTransparent = Color(0x80F3720A);
+
+const white = Color.fromARGB(255, 255, 255, 255);

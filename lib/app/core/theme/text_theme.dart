@@ -14,6 +14,12 @@ const TextStyle titleWhiteTextStyle = TextStyle(
   color: Colors.white,
 );
 
+const TextStyle titleBlackTextStyle = TextStyle(
+  fontFamily: 'Agrandir',
+  fontSize: 24,
+  color: Colors.black,
+);
+
 const TextStyle textDarkGrayTextStyle = TextStyle(
   fontFamily: 'Agrandir',
   fontSize: 16,
@@ -24,6 +30,12 @@ const TextStyle textWhiteTextStyle = TextStyle(
   fontFamily: 'Agrandir',
   fontSize: 16,
   color: Colors.white,
+);
+
+const TextStyle textPrimaryColorTextStyle = TextStyle(
+  fontFamily: 'Agrandir',
+  fontSize: 16,
+  color: Color(0xFF10619A),
 );
 
 const TextStyle textBlackTextStyle = TextStyle(
@@ -40,6 +52,18 @@ const TextStyle textOrangeTextStyle = TextStyle(
 
 ButtonStyle buttonBlueStyle = ButtonStyle(
   backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFF10619A)),
+  padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+    const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+  ),
+  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+    RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(5),
+    ),
+  ),
+);
+
+ButtonStyle buttonGrayStyle = ButtonStyle(
+  backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFFE6E6E6)),
   padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
     const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
   ),

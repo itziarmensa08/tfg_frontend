@@ -4,6 +4,7 @@ import 'package:tfg_frontend/app/core/theme/color_theme.dart';
 import 'package:tfg_frontend/app/core/theme/text_theme.dart';
 import 'package:tfg_frontend/app/data/provider/api.dart';
 import 'package:tfg_frontend/app/data/repository/home_repository.dart';
+import 'package:tfg_frontend/app/global_widgets/separator.dart';
 import 'package:tfg_frontend/app/modules/home/home_controller.dart';
 
 class AdminDashboard extends StatelessWidget {
@@ -16,42 +17,71 @@ class AdminDashboard extends StatelessWidget {
       child: Center(
         child: Column(
           children: [
-            SizedBox(height: MediaQuery.of(context).size.height * 0.2),
+            const SizedBox(height: 50),
             Text(
               'dashboard'.tr,
               style: title1TextStyle,
             ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.1),
-            Wrap(
-              spacing: MediaQuery.of(context).size.height * 0.1,
+            const SizedBox(height: 50),
+            Column(
+              /*spacing: MediaQuery.of(context).size.height * 0.1,
               runAlignment: WrapAlignment.center,
-              alignment: WrapAlignment.center,
-              crossAxisAlignment: WrapCrossAlignment.center,
+              alignment: WrapAlignment.center,*/
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                DashboardCard(
-                  title: 'users'.tr,
-                  icon: Icons.people,
-                  onTap: () {
-                    controllerHome.seeAdmin.value = false;
-                    controllerHome.seeUsers.value = true;
-                  },
+                buildSeparator(context, 'users'.tr, Theme.of(context).primaryColor),
+                const SizedBox(height: 50),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    DashboardCard(
+                      title: 'usersTitle'.tr,
+                      subtitle: 'usersSubtitle'.tr,
+                      icon: Icons.people,
+                      color: Theme.of(context).primaryColor,
+                      onTap: () {
+                        controllerHome.seeAdmin.value = false;
+                        controllerHome.seeUsers.value = true;
+                      },
+                    ),
+                  ],
                 ),
-                DashboardCard(
-                  title: 'aircrafts'.tr,
-                  icon: Icons.airplanemode_active,
-                  onTap: () {
-                    controllerHome.seeAdmin.value = false;
-                    controllerHome.seeAircrafts.value = true;
-                  },
+                const SizedBox(height: 50),
+                buildSeparator(context, 'aircrafts'.tr, orange),
+                const SizedBox(height: 50),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    DashboardCard(
+                      title: 'aircraftsTitle'.tr,
+                      subtitle: 'aircraftsSubtitle'.tr,
+                      icon: Icons.airplanemode_active,
+                      color: orange,
+                      onTap: () {
+                        controllerHome.seeAdmin.value = false;
+                        controllerHome.seeAircrafts.value = true;
+                      },
+                    ),
+                  ],
                 ),
-                DashboardCard(
-                  title: 'airports'.tr,
-                  icon: Icons.location_city,
-                  onTap: () {
-                    controllerHome.seeAdmin.value = false;
-                    controllerHome.seeAirports.value = true;
-                  },
-                ),
+                const SizedBox(height: 50),
+                buildSeparator(context, 'airports'.tr, darkGray),
+                const SizedBox(height: 50),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    DashboardCard(
+                      title: 'airportsTitle'.tr,
+                      subtitle: 'airportsSubtitle'.tr,
+                      icon: Icons.location_city,
+                      color: darkGray,
+                      onTap: () {
+                        controllerHome.seeAdmin.value = false;
+                        controllerHome.seeAirports.value = true;
+                      },
+                    ),
+                  ],
+                )
               ],
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.1),
@@ -64,12 +94,16 @@ class AdminDashboard extends StatelessWidget {
 
 class DashboardCard extends StatefulWidget {
   final String title;
+  final String subtitle;
   final IconData icon;
+  final Color color;
   final VoidCallback onTap;
 
   const DashboardCard({
     required this.title,
+    required this.subtitle,
     required this.icon,
+    required this.color,
     required this.onTap,
     Key? key,
   }) : super(key: key);
@@ -91,25 +125,37 @@ class _DashboardCardState extends State<DashboardCard> {
       child: GestureDetector(
         onTap: widget.onTap,
         child: Card(
-          elevation: _isHovered ? 5 : 3,
-          color: _isHovered ? gray : darkGray,
+          elevation: 5,
+          color: white,
+          shape: RoundedRectangleBorder( 
+            side: BorderSide(
+              color: _isHovered ? widget.color : Colors.transparent,
+              width: 2.0,
+            ),
+            borderRadius: BorderRadius.circular(15.0),
+          ),
           child: SizedBox(
-            width: MediaQuery.of(context).size.height * 0.4,
-            height: MediaQuery.of(context).size.height * 0.4,
+            width: 250,
+            height: 150,
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Icon(
                     widget.icon,
-                    size: 50,
+                    size: 40,
                     color: Theme.of(context).primaryColor,
                   ),
                   const SizedBox(height: 10),
                   Text(
                     widget.title,
-                    style: textWhiteTextStyle
+                    style: textBlackTextStyle.copyWith(fontWeight: FontWeight.bold)
+                  ),
+                  const SizedBox(height: 10),
+                  Text(
+                    widget.subtitle,
+                    style: textBlackTextStyle
                   ),
                 ],
               ),

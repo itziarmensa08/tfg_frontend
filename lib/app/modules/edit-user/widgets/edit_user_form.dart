@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tfg_frontend/app/core/theme/color_theme.dart';
 import 'package:tfg_frontend/app/core/theme/text_theme.dart';
+import 'package:tfg_frontend/app/core/utils/helpers/alert.dart';
 import 'package:tfg_frontend/app/core/utils/helpers/toast.dart';
 import 'package:tfg_frontend/app/data/model/user_model.dart';
 import 'package:tfg_frontend/app/data/provider/api.dart';
@@ -282,37 +283,72 @@ class EditUserForm extends Container {
             icon: const Icon(Icons.arrow_drop_down, color: darkGray),
           ),
           const SizedBox(height: 40),
-          ElevatedButton(
-            style: buttonBlueStyle,
-            onPressed: () async {
-              if (_formKey.currentState!.validate()) {
-                controller.user.value.name = controller.name.text;
-                controller.user.value.surname = controller.surname.text;
-                controller.user.value.username = controller.username.text;
-                controller.user.value.email = controller.email.text;
-                if (controller.telephone.text.isNotEmpty) {
-                  controller.user.value.telephone = int.tryParse(controller.telephone.text);
-                }
-                if (controller.date != null) {
-                  controller.user.value.dateBorn = controller.date;
-                }
-                if (controller.role != null) {
-                  controller.user.value.role = controller.role;
-                }
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton.icon(
+                style: buttonGrayStyle,
+                onPressed: () async {
+                  if (_formKey.currentState!.validate()) {
+                    controller.user.value.name = controller.name.text;
+                    controller.user.value.surname = controller.surname.text;
+                    controller.user.value.username = controller.username.text;
+                    controller.user.value.email = controller.email.text;
+                    if (controller.telephone.text.isNotEmpty) {
+                      controller.user.value.telephone = int.tryParse(controller.telephone.text);
+                    }
+                    if (controller.date != null) {
+                      controller.user.value.dateBorn = controller.date;
+                    }
+                    if (controller.role != null) {
+                      controller.user.value.role = controller.role;
+                    }
 
-                bool? success = await EditUserRepository.updateUser(context, controller.user.value.id!, controller.user.value);
+                    bool? success = await EditUserRepository.updateUser(context, controller.user.value.id!, controller.user.value);
 
-                if (success != null || success == true) {
-                  List<UserModel>? users = await HomeRepository.getUsers(context);
-                  if (users != null) {
-                    controllerHome.users.value = users;
+                    if (success != null || success == true) {
+                      List<UserModel>? users = await HomeRepository.getUsers(context);
+                      if (users != null) {
+                        controllerHome.users.value = users;
+                      }
+                      ToastUtils.showSuccessToast(context, 'editUserSuccess'.tr);
+                      Get.back();
+                    }
                   }
-                  ToastUtils.showSuccessToast(context, 'editUserSuccess'.tr);
-                  Get.back();
-                }
-              }
-            },
-            child: Text('editUser'.tr, style: textDarkGrayTextStyle,),
+                },
+                icon: Icon(Icons.save, color: Theme.of(context).primaryColor),
+                label: Text('editUser'.tr, style: textPrimaryColorTextStyle),
+              ),
+              const SizedBox(width: 40),
+              ElevatedButton.icon(
+                style: buttonGrayStyle,
+                onPressed: () async {
+                  showAlert(
+                    context, 
+                    'deleteUser'.tr, 
+                    'confirmDeleteUser'.tr, 
+                    'yes'.tr, 
+                    'no'.tr,
+                    const Color.fromRGBO(255, 0, 0, 0.5),
+                    () async {
+                      await HomeRepository.deleteUser(context, controller.user.value.id!);
+                      List<UserModel>? users = await HomeRepository.getUsers(context);
+                      if (users != null) {
+                        controllerHome.users.value = users;
+                        Get.back();
+                      }
+                      Navigator.of(context).pop();
+                    },
+                    () {
+                      Navigator.of(context).pop();
+                    }
+                  );
+                },
+                icon: const Icon(Icons.delete, color: Colors.red),
+                label: Text('deleteUser'.tr, style: textPrimaryColorTextStyle.copyWith(color: Colors.red)),
+              ),
+            ],
           ),
         ],
       )

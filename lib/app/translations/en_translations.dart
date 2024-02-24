@@ -51,6 +51,12 @@ final Map<String, String> en = {
   'usersList': 'Users list',
   'aircraftsList': 'Aircrafts list',
   'airportsList': 'Airports list',
+  'usersTitle': 'Users Overview',
+  'usersSubtitle': 'View and manage existing users',
+  'aircraftsTitle': 'Aircrafts Overview',
+  'aircraftsSubtitle': 'View and manage existing aircrafts',
+  'airportsTitle': 'Airports Overview',
+  'airportsSubtitle': 'View and manage existing airports',
 
   //Users
   'rol': 'Role',

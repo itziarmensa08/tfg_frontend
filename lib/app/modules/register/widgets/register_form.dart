@@ -219,7 +219,7 @@ class RegisterForm extends Container {
                 await RegisterRepository.register(user, context);
               }
             },
-            child: Text('putRegister'.tr, style: textDarkGrayTextStyle,),
+            child: Text('putRegister'.tr, style: textWhiteTextStyle),
           ),
         ],
       )

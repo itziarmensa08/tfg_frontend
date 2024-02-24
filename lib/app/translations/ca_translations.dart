@@ -51,6 +51,12 @@ final Map<String, String> ca = {
   'usersList': 'Llista d\'usuaris',
   'aircraftsList': 'Llista d\'aeronaus',
   'airportsList': 'Llista d\'aeroports',
+  'usersTitle': 'Consulta d\'usuaris',
+  'usersSubtitle': 'Veure i administrar usuaris existents',
+  'aircraftsTitle': 'Consulta d\'aeronaus',
+  'aircraftsSubtitle': 'Veure i administrar aeronaus existents',
+  'airportsTitle': 'Consulta d\'aeroports',
+  'airportsSubtitle': 'Veure i administrar aeroports existents',
 
   //Users
   'rol': 'Rol',
