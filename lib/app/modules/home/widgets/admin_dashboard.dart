@@ -24,15 +24,14 @@ class AdminDashboard extends StatelessWidget {
             ),
             const SizedBox(height: 50),
             Column(
-              /*spacing: MediaQuery.of(context).size.height * 0.1,
-              runAlignment: WrapAlignment.center,
-              alignment: WrapAlignment.center,*/
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 buildSeparator(context, 'users'.tr, Theme.of(context).primaryColor),
                 const SizedBox(height: 50),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                Wrap(
+                  spacing: 30,
+                  runAlignment: WrapAlignment.center,
+                  alignment: WrapAlignment.center,
                   children: [
                     DashboardCard(
                       title: 'usersTitle'.tr,
@@ -44,13 +43,25 @@ class AdminDashboard extends StatelessWidget {
                         controllerHome.seeUsers.value = true;
                       },
                     ),
+                    DashboardCard(
+                      title: 'addUserTitle'.tr,
+                      subtitle: 'addUserSubtitle'.tr,
+                      icon: Icons.person_add,
+                      color: Theme.of(context).primaryColor,
+                      onTap: () {
+                        controllerHome.seeAdmin.value = false;
+                        controllerHome.seeUsers.value = true;
+                      },
+                    ),
                   ],
                 ),
                 const SizedBox(height: 50),
                 buildSeparator(context, 'aircrafts'.tr, orange),
                 const SizedBox(height: 50),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                Wrap(
+                  spacing: 30,
+                  runAlignment: WrapAlignment.center,
+                  alignment: WrapAlignment.center,
                   children: [
                     DashboardCard(
                       title: 'aircraftsTitle'.tr,
@@ -62,18 +73,40 @@ class AdminDashboard extends StatelessWidget {
                         controllerHome.seeAircrafts.value = true;
                       },
                     ),
+                    DashboardCard(
+                      title: 'addAircraftTitle'.tr,
+                      subtitle: 'addAircraftSubtitle'.tr,
+                      icon: Icons.add_circle_outline_outlined,
+                      color: Theme.of(context).primaryColor,
+                      onTap: () {
+                        controllerHome.seeAdmin.value = false;
+                        controllerHome.seeUsers.value = true;
+                      },
+                    ),
                   ],
                 ),
                 const SizedBox(height: 50),
                 buildSeparator(context, 'airports'.tr, darkGray),
                 const SizedBox(height: 50),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                Wrap(
+                  spacing: 30,
+                  runAlignment: WrapAlignment.center,
+                  alignment: WrapAlignment.center,
                   children: [
                     DashboardCard(
                       title: 'airportsTitle'.tr,
                       subtitle: 'airportsSubtitle'.tr,
-                      icon: Icons.location_city,
+                      icon: Icons.connecting_airports,
+                      color: darkGray,
+                      onTap: () {
+                        controllerHome.seeAdmin.value = false;
+                        controllerHome.seeAirports.value = true;
+                      },
+                    ),
+                    DashboardCard(
+                      title: 'addAirportTitle'.tr,
+                      subtitle: 'addAirportSubtitle'.tr,
+                      icon: Icons.add_home_work_outlined,
                       color: darkGray,
                       onTap: () {
                         controllerHome.seeAdmin.value = false;

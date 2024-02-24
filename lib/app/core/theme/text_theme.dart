@@ -23,7 +23,7 @@ const TextStyle titleBlackTextStyle = TextStyle(
 const TextStyle textDarkGrayTextStyle = TextStyle(
   fontFamily: 'Agrandir',
   fontSize: 16,
-  color: Color(0xFFCBC8C8),
+  color: Color.fromARGB(255, 180, 179, 179),
 );
 
 const TextStyle textWhiteTextStyle = TextStyle(

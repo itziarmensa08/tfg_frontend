@@ -8,6 +8,6 @@ final ThemeData appThemeData = ThemeData(
     displayLarge: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
   ), 
   colorScheme: const ColorScheme.dark(
-    background: Color(0xFFE6E6E6)
+    background: Color.fromARGB(255, 238, 238, 238)
   ),
 );

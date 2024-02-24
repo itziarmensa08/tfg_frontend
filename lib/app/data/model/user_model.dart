@@ -54,7 +54,12 @@ class UserModel {
     data['_id'] = id;
     data['telephone'] = telephone;
     if (dateBorn != null) {
-      data['dateBorn'] = dateBorn!.toIso8601String();
+      DateTime utcDateBorn = DateTime.utc(
+        dateBorn!.year,
+        dateBorn!.month,
+        dateBorn!.day,
+      );
+      data['dateBorn'] = utcDateBorn.toIso8601String();
     } else {
       data['dateBorn'] = dateBorn;
     }

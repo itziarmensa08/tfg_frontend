@@ -57,6 +57,12 @@ final Map<String, String> es = {
   'aircraftsSubtitle': 'Ver y administrar aeronaves existentes',
   'airportsTitle': 'Consulta de aeropuertos',
   'airportsSubtitle': 'Ver y administrar aeropuertos existentes',
+  'addUserTitle': 'Agregar Nuevo Usuario',
+  'addUserSubtitle': 'Crear una nueva cuenta de usuario',
+  'addAircraftTitle': 'Agregar Nueva Aeronave',
+  'addAircraftSubtitle': 'Registrar una nueva aeronave',
+  'addAirportTitle': 'Agregar Nuevo Aeropuerto',
+  'addAirportSubtitle': 'Registrar un nuevo aeropuerto',
 
   //Users
   'rol': 'Rol',

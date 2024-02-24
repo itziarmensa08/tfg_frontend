@@ -1,7 +1,7 @@
 
 import 'dart:ui';
 
-const darkGray = Color(0xFFCBC8C8);
+const darkGray = Color.fromARGB(255, 180, 179, 179);
 
 const gray = Color(0xFFE6E6E6);
 

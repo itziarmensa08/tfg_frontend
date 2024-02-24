@@ -57,6 +57,12 @@ final Map<String, String> ca = {
   'aircraftsSubtitle': 'Veure i administrar aeronaus existents',
   'airportsTitle': 'Consulta d\'aeroports',
   'airportsSubtitle': 'Veure i administrar aeroports existents',
+  'addUserTitle': 'Afegir Nou Usuari',
+  'addUserSubtitle': 'Crea un nou compte d\'usuari',
+  'addAircraftTitle': 'Afegir Nova Aeronau',
+  'addAircraftSubtitle': 'Registra una nova aeronau',
+  'addAirportTitle': 'Afegir Nou Aeroport',
+  'addAirportSubtitle': 'Registra un nou aeroport',
 
   //Users
   'rol': 'Rol',

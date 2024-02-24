@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:tfg_frontend/app/core/theme/text_theme.dart';
 import 'package:tfg_frontend/app/data/model/user_model.dart';
 import 'package:tfg_frontend/app/modules/home/widgets/user_card.dart';
+import 'package:intl/intl.dart';
 
 class UserList extends StatelessWidget {
 
@@ -41,7 +42,7 @@ class UserList extends StatelessWidget {
               prefixTelephone: '${'telephone'.tr}: ',
               telephone: '${users[index].telephone}' == 'null' ? 'notSpecified'.tr : '${users[index].telephone}',
               prefixBorn: '${'dateBorn'.tr}: ',
-              dateBorn: '${users[index].dateBorn}' == 'null' ? 'notSpecified'.tr : '${users[index].dateBorn}',
+              dateBorn: '${users[index].dateBorn}' == 'null' ? 'notSpecified'.tr : DateFormat.yMMMd().format(users[index].dateBorn!),
               prefixLang: '${'language'.tr}: ',
               lang: '${users[index].language}'.tr,
               icon: Icons.person,

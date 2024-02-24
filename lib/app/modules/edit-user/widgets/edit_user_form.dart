@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:tfg_frontend/app/core/theme/color_theme.dart';
 import 'package:tfg_frontend/app/core/theme/text_theme.dart';
 import 'package:tfg_frontend/app/core/utils/helpers/alert.dart';
@@ -227,7 +228,8 @@ class EditUserForm extends Container {
               );
               if (pickedDate != null) {
                 controller.date = pickedDate;
-                controller.dateborn.text = '${pickedDate.year}-${pickedDate.month}-${pickedDate.day}';
+                String formattedDate = DateFormat('yyyy-MM-dd').format(pickedDate);
+                controller.dateborn.text = formattedDate;
               }
             },
             decoration: InputDecoration(

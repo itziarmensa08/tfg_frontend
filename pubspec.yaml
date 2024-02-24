@@ -41,6 +41,7 @@ dependencies:
   http: ^1.1.0
   http_interceptor: ^2.0.0-beta.7
   easy_sidemenu: ^0.5.0
+  intl: ^0.19.0
 
 dev_dependencies:
   flutter_test:

@@ -37,27 +37,9 @@ class HomePage extends GetView<HomeController> {
             ),
             title: Column(
               children: [
-                const SizedBox(height: 20),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    ConstrainedBox(
-                      constraints: const BoxConstraints(
-                        maxHeight: 150,
-                        maxWidth: 150,
-                      ),
-                      child: Image.asset(
-                        'assets/aircraft.png',
-                      ),
-                    ),
-                    Text(
-                      'EOSIDcalculation'.tr,
-                      style: titleWhiteTextStyle,
-                    ),
-                  ],
-                ),
+                Image.asset('assets/aircraft.png'),
                 const Divider(
-                  thickness: 5,
+                  thickness: 2,
                   color: Colors.white,
                 ),
               ],

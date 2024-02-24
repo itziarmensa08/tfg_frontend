@@ -100,7 +100,7 @@ class _UserCardState extends State<UserCard> {
                         widget.name,
                         style: titleBlackTextStyle.copyWith(fontWeight: FontWeight.bold)
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 20),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.center,
