@@ -1,17 +1,23 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tfg_frontend/app/core/theme/color_theme.dart';
 import 'package:tfg_frontend/app/core/theme/text_theme.dart';
 import 'package:tfg_frontend/app/data/model/user_model.dart';
+import 'package:tfg_frontend/app/data/provider/api.dart';
+import 'package:tfg_frontend/app/data/repository/home_repository.dart';
 import 'package:tfg_frontend/app/data/repository/register_repository.dart';
-import 'package:tfg_frontend/app/modules/register/register_controller.dart';
-import 'package:tfg_frontend/app/routes/app_pages.dart';
+import 'package:tfg_frontend/app/modules/home/home_controller.dart';
+import 'package:tfg_frontend/app/modules/home/widgets/users/add_user.dart';
 
-class RegisterForm extends Container {
+class AddUserForm extends Container {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final controller = Get.find<RegisterController>();
+  final AddUserController controller = Get.put(AddUserController(RegisterRepository(MyApi())));
+  final HomeController controllerHome = Get.put(HomeController(HomeRepository(MyApi())));
 
-  RegisterForm({super.key});
+  AddUserForm({super.key});
 
   String? textValidator (String? value) {
     if (value == null || value.isEmpty) {
@@ -59,14 +65,14 @@ class RegisterForm extends Container {
               labelText: 'name'.tr,
               labelStyle: textDarkGrayTextStyle,
               floatingLabelStyle: textOrangeTextStyle,
-              enabledBorder: OutlineInputBorder(
+              enabledBorder: const OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.background,
+                  color: darkGray,
                 ),
               ),
-              focusedBorder: OutlineInputBorder(
+              focusedBorder: const OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.background,
+                  color: darkGray,
                 ),
               ),
               suffixIcon: const Icon(Icons.person, color: Color(0xFFCBC8C8),),
@@ -84,14 +90,14 @@ class RegisterForm extends Container {
               labelText: 'surname'.tr,
               labelStyle: textDarkGrayTextStyle,
               floatingLabelStyle: textOrangeTextStyle,
-              enabledBorder: OutlineInputBorder(
+              enabledBorder: const OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.background,
+                  color: darkGray,
                 ),
               ),
-              focusedBorder: OutlineInputBorder(
+              focusedBorder: const OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.background,
+                  color: darkGray,
                 ),
               ),
               suffixIcon: const Icon(Icons.person, color: Color(0xFFCBC8C8),),
@@ -109,14 +115,14 @@ class RegisterForm extends Container {
               labelText: 'username'.tr,
               labelStyle: textDarkGrayTextStyle,
               floatingLabelStyle: textOrangeTextStyle,
-              enabledBorder: OutlineInputBorder(
+              enabledBorder: const OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.background,
+                  color: darkGray,
                 ),
               ),
-              focusedBorder: OutlineInputBorder(
+              focusedBorder: const OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.background,
+                  color: darkGray,
                 ),
               ),
               suffixIcon: const Icon(Icons.person, color: Color(0xFFCBC8C8),),
@@ -134,14 +140,14 @@ class RegisterForm extends Container {
               labelText: 'email'.tr,
               labelStyle: textDarkGrayTextStyle,
               floatingLabelStyle: textOrangeTextStyle,
-              enabledBorder: OutlineInputBorder(
+              enabledBorder: const OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.background,
+                  color: darkGray,
                 ),
               ),
-              focusedBorder: OutlineInputBorder(
+              focusedBorder: const OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.background,
+                  color: darkGray,
                 ),
               ),
               suffixIcon: const Icon(Icons.email, color: Color(0xFFCBC8C8),),
@@ -160,14 +166,14 @@ class RegisterForm extends Container {
               labelText: 'pass'.tr,
               labelStyle: textDarkGrayTextStyle,
               floatingLabelStyle: textOrangeTextStyle,
-              enabledBorder: OutlineInputBorder(
+              enabledBorder: const OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.background,
+                  color: darkGray,
                 ),
               ),
-              focusedBorder: OutlineInputBorder(
+              focusedBorder: const OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.background,
+                  color: darkGray,
                 ),
               ),
               suffixIcon: const Icon(Icons.key, color: Color(0xFFCBC8C8),)
@@ -186,23 +192,54 @@ class RegisterForm extends Container {
               labelText: 'repeatPass'.tr,
               labelStyle: textDarkGrayTextStyle,
               floatingLabelStyle: textOrangeTextStyle,
-              enabledBorder: OutlineInputBorder(
+              enabledBorder: const OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.background,
+                  color: darkGray,
                 ),
               ),
-              focusedBorder: OutlineInputBorder(
+              focusedBorder: const OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.background,
+                  color: darkGray,
                 ),
               ),
               suffixIcon: const Icon(Icons.key, color: Color(0xFFCBC8C8),)
             ),
             validator: (value) => passwordValidator(value, controller.password1.text),
           ),
+          const SizedBox(height: 20),
+          DropdownButtonFormField<String>(
+            value: controller.role,
+            items: <String>['admin', 'user'].map((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value.tr, style: textDarkGrayTextStyle),
+              );
+            }).toList(),
+            onChanged: (String? newValue) {
+              controller.role = newValue;
+            },
+            decoration: InputDecoration(
+              filled: true,
+              fillColor: Theme.of(context).colorScheme.background,
+              labelText: 'rol'.tr,
+              labelStyle: textDarkGrayTextStyle,
+              floatingLabelStyle: textOrangeTextStyle,
+              enabledBorder: const OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: darkGray,
+                ),
+              ),
+              focusedBorder: const OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: darkGray,
+                ),
+              ),
+            ),
+            icon: const Icon(Icons.arrow_drop_down, color: darkGray),
+          ),
           const SizedBox(height: 40),
-          ElevatedButton(
-            style: buttonBlueStyle,
+          ElevatedButton.icon(
+            style: buttonGrayStyle,
             onPressed: () async {
               if (_formKey.currentState!.validate()) {
                 SharedPreferences prefs = await SharedPreferences.getInstance(); 
@@ -212,16 +249,21 @@ class RegisterForm extends Container {
                   username: controller.username.text, 
                   email: controller.email.text,
                   password: controller.password1.text,
-                  role: 'user',
+                  role: controller.role,
                   language: prefs.getString('language') ?? 'es'
                 );
 
-                // ignore: use_build_context_synchronously
                 await RegisterRepository.register(user, context);
-                Get.toNamed(Routes.login);
+                List<UserModel>? users = await HomeRepository.getUsers(context);
+                if (users != null) {
+                  controllerHome.users.value = users;
+                }
+                controllerHome.seeUsers.value = true;
+                controllerHome.seeAddUsers.value = false;
               }
             },
-            child: Text('putRegister'.tr, style: textWhiteTextStyle),
+            icon: Icon(Icons.save, color: Theme.of(context).primaryColor),
+            label: Text('addUser'.tr, style: textPrimaryColorTextStyle),
           ),
         ],
       )

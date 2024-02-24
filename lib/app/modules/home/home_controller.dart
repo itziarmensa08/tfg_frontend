@@ -16,6 +16,7 @@ class HomeController extends GetxController {
 
   RxBool seeAdmin = RxBool(true);
   RxBool seeUsers = RxBool(false);
+  RxBool seeAddUsers = RxBool(false);
   RxBool seeAircrafts = RxBool(false);
   RxBool seeAirports = RxBool(false);
 

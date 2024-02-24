@@ -257,7 +257,7 @@ class EditUserForm extends Container {
             items: <String>['admin', 'user'].map((String value) {
               return DropdownMenuItem<String>(
                 value: value,
-                child: Text(value, style: textDarkGrayTextStyle),
+                child: Text(value.tr, style: textDarkGrayTextStyle),
               );
             }).toList(),
             onChanged: (String? newValue) {
@@ -268,7 +268,7 @@ class EditUserForm extends Container {
             decoration: InputDecoration(
               filled: true,
               fillColor: Theme.of(context).colorScheme.background,
-              labelText: 'role'.tr,
+              labelText: 'rol'.tr,
               labelStyle: textDarkGrayTextStyle,
               floatingLabelStyle: textOrangeTextStyle,
               enabledBorder: OutlineInputBorder(

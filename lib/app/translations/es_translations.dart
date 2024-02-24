@@ -41,6 +41,7 @@ final Map<String, String> es = {
   'newAnalisis': 'Nuevo análisis',
   'tasks': 'Tareas',
   'admin': 'Administrador',
+  'user': 'Usuario',
   'settings': 'Configuración',
 
   //Admin page
@@ -63,6 +64,7 @@ final Map<String, String> es = {
   'addAircraftSubtitle': 'Registrar una nueva aeronave',
   'addAirportTitle': 'Agregar Nuevo Aeropuerto',
   'addAirportSubtitle': 'Registrar un nuevo aeropuerto',
+  'addUser': 'Guardar usuario',
 
   //Users
   'rol': 'Rol',

@@ -50,7 +50,7 @@ class AdminDashboard extends StatelessWidget {
                       color: Theme.of(context).primaryColor,
                       onTap: () {
                         controllerHome.seeAdmin.value = false;
-                        controllerHome.seeUsers.value = true;
+                        controllerHome.seeAddUsers.value = true;
                       },
                     ),
                   ],

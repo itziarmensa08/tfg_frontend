@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 import 'package:tfg_frontend/app/core/utils/helpers/toast.dart';
 import 'package:tfg_frontend/app/data/model/user_model.dart';
 import 'package:tfg_frontend/app/data/provider/api.dart';
-import 'package:tfg_frontend/app/routes/app_pages.dart';
 
 class RegisterRepository {
 
@@ -26,7 +25,6 @@ RegisterRepository(this.api);
 
       if (response.statusCode == 201) {
         ToastUtils.showSuccessToast(context, 'Success Register');
-        Get.toNamed(Routes.login);
       } else {
         ToastUtils.showErrorToast(context, '${response.data}'.tr);
       }

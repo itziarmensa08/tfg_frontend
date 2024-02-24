@@ -29,10 +29,14 @@ class EditUserBinding implements Bindings {
 
         if (user.telephone != null) {
           controller.telephone.text = user.telephone.toString();
+        } else {
+          controller.telephone = TextEditingController();
         }
 
         if (user.dateBorn != null) {
           controller.dateborn.text = user.dateBorn.toString();
+        } else {
+          controller.dateborn = TextEditingController();
         }
       }
     }

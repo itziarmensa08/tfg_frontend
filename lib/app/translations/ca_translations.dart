@@ -41,6 +41,7 @@ final Map<String, String> ca = {
   'newAnalisis': 'Nou anàlisi',
   'tasks': 'Tasques',
   'admin': 'Administrador',
+  'user': 'Usuari',
   'settings': 'Configuració',
 
   //Admin page
@@ -63,6 +64,7 @@ final Map<String, String> ca = {
   'addAircraftSubtitle': 'Registra una nova aeronau',
   'addAirportTitle': 'Afegir Nou Aeroport',
   'addAirportSubtitle': 'Registra un nou aeroport',
+  'addUser': 'Guardar usuari',
 
   //Users
   'rol': 'Rol',

@@ -14,8 +14,8 @@ class EditUserController extends GetxController {
   final TextEditingController surname = TextEditingController();
   final TextEditingController username = TextEditingController();
   final TextEditingController email = TextEditingController();
-  final TextEditingController telephone = TextEditingController();
-  final TextEditingController dateborn = TextEditingController();
+  TextEditingController telephone = TextEditingController();
+  TextEditingController dateborn = TextEditingController();
 
   DateTime? date;
   String? role;
