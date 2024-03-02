@@ -24,7 +24,7 @@ RegisterRepository(this.api);
       );
 
       if (response.statusCode == 201) {
-        ToastUtils.showSuccessToast(context, 'Success Register');
+        ToastUtils.showSuccessToast(context, 'successRegister'.tr);
       } else {
         ToastUtils.showErrorToast(context, '${response.data}'.tr);
       }

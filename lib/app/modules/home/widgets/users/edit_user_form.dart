@@ -9,14 +9,13 @@ import 'package:tfg_frontend/app/core/utils/helpers/alert.dart';
 import 'package:tfg_frontend/app/core/utils/helpers/toast.dart';
 import 'package:tfg_frontend/app/data/model/user_model.dart';
 import 'package:tfg_frontend/app/data/provider/api.dart';
-import 'package:tfg_frontend/app/data/repository/edit_user_repository.dart';
 import 'package:tfg_frontend/app/data/repository/home_repository.dart';
-import 'package:tfg_frontend/app/modules/edit-user/edit_user_controller.dart';
 import 'package:tfg_frontend/app/modules/home/home_controller.dart';
+import 'package:tfg_frontend/app/modules/home/widgets/users/edit_user.dart';
 
 class EditUserForm extends Container {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final controller = Get.find<EditUserController>();
+  final EditUserController controller = Get.put(EditUserController(HomeRepository(MyApi())));
   final HomeController controllerHome = Get.put(HomeController(HomeRepository(MyApi())));
 
   EditUserForm({super.key});
@@ -62,7 +61,6 @@ class EditUserForm extends Container {
     return null;
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -79,14 +77,14 @@ class EditUserForm extends Container {
               labelText: 'name'.tr,
               labelStyle: textDarkGrayTextStyle,
               floatingLabelStyle: textOrangeTextStyle,
-              enabledBorder: OutlineInputBorder(
+              enabledBorder: const OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.background,
+                  color: darkGray,
                 ),
               ),
-              focusedBorder: OutlineInputBorder(
+              focusedBorder: const OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.background,
+                  color: darkGray,
                 ),
               ),
               suffixIcon: const Icon(Icons.person, color: Color(0xFFCBC8C8),),
@@ -104,14 +102,14 @@ class EditUserForm extends Container {
               labelText: 'surname'.tr,
               labelStyle: textDarkGrayTextStyle,
               floatingLabelStyle: textOrangeTextStyle,
-              enabledBorder: OutlineInputBorder(
+              enabledBorder: const OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.background,
+                  color: darkGray,
                 ),
               ),
-              focusedBorder: OutlineInputBorder(
+              focusedBorder: const OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.background,
+                  color: darkGray,
                 ),
               ),
               suffixIcon: const Icon(Icons.person, color: Color(0xFFCBC8C8),),
@@ -129,14 +127,14 @@ class EditUserForm extends Container {
               labelText: 'username'.tr,
               labelStyle: textDarkGrayTextStyle,
               floatingLabelStyle: textOrangeTextStyle,
-              enabledBorder: OutlineInputBorder(
+              enabledBorder: const OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.background,
+                  color: darkGray,
                 ),
               ),
-              focusedBorder: OutlineInputBorder(
+              focusedBorder: const OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.background,
+                  color: darkGray,
                 ),
               ),
               suffixIcon: const Icon(Icons.person, color: Color(0xFFCBC8C8),),
@@ -154,14 +152,14 @@ class EditUserForm extends Container {
               labelText: 'email'.tr,
               labelStyle: textDarkGrayTextStyle,
               floatingLabelStyle: textOrangeTextStyle,
-              enabledBorder: OutlineInputBorder(
+              enabledBorder: const OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.background,
+                  color: darkGray,
                 ),
               ),
-              focusedBorder: OutlineInputBorder(
+              focusedBorder: const OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.background,
+                  color: darkGray,
                 ),
               ),
               suffixIcon: const Icon(Icons.email, color: Color(0xFFCBC8C8),),
@@ -179,17 +177,17 @@ class EditUserForm extends Container {
               labelText: 'telephone'.tr,
               labelStyle: textDarkGrayTextStyle,
               floatingLabelStyle: textOrangeTextStyle,
-              enabledBorder: OutlineInputBorder(
+              enabledBorder: const OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.background,
+                  color: darkGray,
                 ),
               ),
-              focusedBorder: OutlineInputBorder(
+              focusedBorder: const OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.background,
+                  color: darkGray,
                 ),
               ),
-              suffixIcon: const Icon(Icons.phone, color: Color(0xFFCBC8C8),)
+              suffixIcon: const Icon(Icons.phone, color: Color(0xFFCBC8C8),),
             ),
             validator: (value) => phoneValidator(value),
           ),
@@ -238,14 +236,14 @@ class EditUserForm extends Container {
               labelText: 'dateBorn'.tr,
               labelStyle: textDarkGrayTextStyle,
               floatingLabelStyle: textOrangeTextStyle,
-              enabledBorder: OutlineInputBorder(
+              enabledBorder: const OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.background,
+                  color: darkGray,
                 ),
               ),
-              focusedBorder: OutlineInputBorder(
+              focusedBorder: const OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.background,
+                  color: darkGray,
                 ),
               ),
               suffixIcon: const Icon(Icons.date_range, color: Color(0xFFCBC8C8)),
@@ -253,7 +251,7 @@ class EditUserForm extends Container {
           ),
           const SizedBox(height: 20),
           DropdownButtonFormField<String>(
-            value: controller.user.value.role,
+            value: controller.role,
             items: <String>['admin', 'user'].map((String value) {
               return DropdownMenuItem<String>(
                 value: value,
@@ -261,9 +259,7 @@ class EditUserForm extends Container {
               );
             }).toList(),
             onChanged: (String? newValue) {
-              controller.user.update((val) {
-                val!.role = newValue;
-              });
+              controller.role = newValue;
             },
             decoration: InputDecoration(
               filled: true,
@@ -271,14 +267,14 @@ class EditUserForm extends Container {
               labelText: 'rol'.tr,
               labelStyle: textDarkGrayTextStyle,
               floatingLabelStyle: textOrangeTextStyle,
-              enabledBorder: OutlineInputBorder(
+              enabledBorder: const OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.background,
+                  color: darkGray,
                 ),
               ),
-              focusedBorder: OutlineInputBorder(
+              focusedBorder: const OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.background,
+                  color: darkGray,
                 ),
               ),
             ),
@@ -307,15 +303,16 @@ class EditUserForm extends Container {
                       controller.user.value.role = controller.role;
                     }
 
-                    bool? success = await EditUserRepository.updateUser(context, controller.user.value.id!, controller.user.value);
+                    bool? success = await HomeRepository.updateUser(context, controller.user.value.id!, controller.user.value);
 
                     if (success != null || success == true) {
                       List<UserModel>? users = await HomeRepository.getUsers(context);
                       if (users != null) {
                         controllerHome.users.value = users;
+                        controllerHome.seeUsers.value = true;
+                        controllerHome.editUser.value = false;
                       }
                       ToastUtils.showSuccessToast(context, 'editUserSuccess'.tr);
-                      Get.back();
                     }
                   }
                 },
@@ -338,7 +335,8 @@ class EditUserForm extends Container {
                       List<UserModel>? users = await HomeRepository.getUsers(context);
                       if (users != null) {
                         controllerHome.users.value = users;
-                        Get.back();
+                        controllerHome.seeUsers.value = true;
+                        controllerHome.editUser.value = false;
                       }
                       Navigator.of(context).pop();
                     },

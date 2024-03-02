@@ -33,6 +33,7 @@ final Map<String, String> ca = {
   'equalPass': 'Les contrasenyes no coincideixen',
   'longPass': 'La contrasenya ha de tenir almenys 7 caràcters',
   'validEmail': 'Si us plau, introdueix un email valid (flightlinebcn.com)',
+  'successRegister': 'Usuari registrat correctament',
 
   //Home
   'EOSIDcalculation': 'Càlcul EOSID',

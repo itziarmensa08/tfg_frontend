@@ -47,6 +47,7 @@ List<SideMenuItem> buildSideMenuItems(controller) {
           controller.seeAdmin.value = true;
           controller.seeAircrafts.value = false;
           controller.seeUsers.value = false;
+          controller.editUser.value = false;
           controller.seeAirports.value = false;
           controller.sideMenu.changePage(index);
         },

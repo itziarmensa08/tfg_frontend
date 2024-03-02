@@ -29,7 +29,7 @@ class PrincipalPage extends StatelessWidget {
                         },
                         icon: const Icon(Icons.search, color: darkGray,),
                       ),
-                      Text('Buscar...', style: textDarkGrayTextStyle,),
+                      const Text('Buscar...', style: textDarkGrayTextStyle,),
                     ],
                   ),
                   Row(

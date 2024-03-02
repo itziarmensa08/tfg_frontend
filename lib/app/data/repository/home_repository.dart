@@ -58,4 +58,47 @@ class HomeRepository {
     }
   }
 
+  static Future<UserModel?> getUserById(BuildContext context, String userId) async {
+    ApiResponse response;
+    ToastUtils.initFToast(context);
+
+    try {
+      response = await MyApi().get('/users/$userId');
+
+      if (response.statusCode == 200) {
+        dynamic data = response.data;
+        UserModel user = UserModel.fromJson(data);
+        return user;
+      } else {
+        ToastUtils.showErrorToast(context, response.data);
+      }
+      
+    } catch (error) {
+      ToastUtils.showErrorToast(context, 'Error GetUsers: $error');
+    }
+    return null;
+  }
+
+  static Future<bool?> updateUser(BuildContext context, String userId, UserModel user) async {
+    ApiResponse response;
+    ToastUtils.initFToast(context);
+
+    try {
+      response = await MyApi().put(
+        '/users/$userId',
+        data: user.toJson()
+      );
+
+      if (response.statusCode == 200) {
+        return true;
+      } else {
+        ToastUtils.showErrorToast(context, response.data);
+      }
+      
+    } catch (error) {
+      ToastUtils.showErrorToast(context, 'Error GetUsers: $error');
+    }
+    return null;
+  }
+
 }

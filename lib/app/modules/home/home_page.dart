@@ -10,6 +10,7 @@ import 'package:tfg_frontend/app/modules/home/widgets/airports/airports.dart';
 import 'package:tfg_frontend/app/modules/home/widgets/list_sidemenu.dart';
 import 'package:tfg_frontend/app/modules/home/widgets/principal_page.dart';
 import 'package:tfg_frontend/app/modules/home/widgets/users/add_user.dart';
+import 'package:tfg_frontend/app/modules/home/widgets/users/edit_user.dart';
 import 'package:tfg_frontend/app/modules/home/widgets/users/users.dart';
 
 class HomePage extends GetView<HomeController> {
@@ -90,6 +91,8 @@ class HomePage extends GetView<HomeController> {
                       return AdminDashboard();
                     } else if (controller.seeUsers.value) {
                       return UserList(users: controller.users);
+                    } else if (controller.editUser.value) {
+                      return const EditUser();
                     } else if (controller.seeAddUsers.value) {
                       return const AddUser();
                     } else if (controller.seeAircrafts.value) {

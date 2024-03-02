@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tfg_frontend/app/core/theme/color_theme.dart';
 import 'package:tfg_frontend/app/core/theme/text_theme.dart';
+import 'package:tfg_frontend/app/data/model/user_model.dart';
 import 'package:tfg_frontend/app/data/provider/api.dart';
 import 'package:tfg_frontend/app/data/repository/home_repository.dart';
 import 'package:tfg_frontend/app/modules/home/home_controller.dart';
+import 'package:tfg_frontend/app/modules/home/widgets/users/edit_user.dart';
 import 'package:tfg_frontend/app/routes/app_pages.dart';
 
 class UserCard extends StatefulWidget {
@@ -26,7 +28,7 @@ class UserCard extends StatefulWidget {
   final String lang;
   final IconData icon;
 
-  UserCard({
+  const UserCard({
     required this.id,
     required this.name,
     required this.prefixUsername,
@@ -45,8 +47,6 @@ class UserCard extends StatefulWidget {
     Key? key,
   }) : super(key: key);
 
-  final HomeController controllerHome = Get.put(HomeController(HomeRepository(MyApi())));
-
   @override
   // ignore: library_private_types_in_public_api
   _UserCardState createState() => _UserCardState();
@@ -54,15 +54,36 @@ class UserCard extends StatefulWidget {
 
 class _UserCardState extends State<UserCard> {
   bool _isHovered = false;
+  final HomeController controllerHome = Get.put(HomeController(HomeRepository(MyApi())));
+  final EditUserController controllerEdit = Get.put(EditUserController(HomeRepository(MyApi())));
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Get.toNamed(
-          Routes.editUser, 
-          parameters: {"userId": widget.id}
-        );
+      onTap: () async {
+        UserModel? user = await HomeRepository.getUserById(context, widget.id);
+        if(user != null) {
+          controllerEdit.user.value = user;
+          controllerEdit.name.text = user.name!;
+          controllerEdit.surname.text = user.surname!;
+          controllerEdit.username.text = user.username!;
+          controllerEdit.email.text = user.email!;
+          controllerEdit.role = user.role!;
+
+          if (user.telephone != null) {
+            controllerEdit.telephone.text = user.telephone.toString();
+          } else {
+            controllerEdit.telephone = TextEditingController();
+          }
+
+          if (user.dateBorn != null) {
+            controllerEdit.dateborn.text = user.dateBorn.toString();
+          } else {
+            controllerEdit.dateborn = TextEditingController();
+          }
+        }        
+        controllerHome.seeUsers.value = false;
+        controllerHome.editUser.value = true;
       },
       child: Card(
         color: white,

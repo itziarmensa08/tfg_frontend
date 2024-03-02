@@ -33,6 +33,7 @@ final Map<String, String> es = {
   'equalPass': "Las contraseñas no coinciden",
   'longPass': "La contraseña debe contener más de 7 carácteres",
   'validEmail': 'Por favor introduce un email válido (flightlinebcn.com)',
+  'successRegister': 'Usuario registrado correctamente',
 
   //Home
   'EOSIDcalculation': 'Cálculo EOSID',
