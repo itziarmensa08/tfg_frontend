@@ -93,4 +93,16 @@ final Map<String, String> es = {
   'aircraftDeleted': 'Aeronave borrada correctamente',
   'deleteAircraft': 'Eliminar aeronave',
   'confirmDeleteAircraft': '¿Estás seguro de que quieres borrar esta aeronave?',
+
+  // Airports
+  'elevation': 'Elevación',
+  'oaciCode': 'Código OACI',
+  'iataCode': 'Código IATA',
+  'succesAddAirport': 'Aeropuerto registrado correctamente',
+  'addAirport': 'Guardar aeropuerto',
+  'editAirport': 'Editar aeropuerto',
+  'airportDeleted': 'Aeropuerto borrado correctamente',
+  'editAirportSuccess': 'Aeropuerto editado correctamente',
+  'deleteAirport': 'Eliminar aeropuerto',
+  'confirmDeleteAirport': '¿Estás seguro de que quieres borrar este aeropuerto?',
 };

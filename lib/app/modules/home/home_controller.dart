@@ -2,6 +2,7 @@ import 'package:easy_sidemenu/easy_sidemenu.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tfg_frontend/app/data/model/aircraft_model.dart';
+import 'package:tfg_frontend/app/data/model/airport_model.dart';
 import 'package:tfg_frontend/app/data/model/user_model.dart';
 import 'package:tfg_frontend/app/data/repository/home_repository.dart';
 
@@ -23,8 +24,11 @@ class HomeController extends GetxController {
   RxBool seeAddAircraft = RxBool(false);
   RxBool seeEditAircraft = RxBool(false);
   RxBool seeAirports = RxBool(false);
+  RxBool seeAddAirports = RxBool(false);
+  RxBool seeEditAirports = RxBool(false);
 
   RxList<UserModel> users = <UserModel>[].obs;
   RxList<AircraftModel> aircrafts = <AircraftModel>[].obs;
+  RxList<AirportModel> airports= <AirportModel>[].obs;
 
 }

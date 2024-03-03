@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tfg_frontend/app/core/theme/text_theme.dart';
+import 'package:tfg_frontend/app/data/model/airport_model.dart';
+import 'package:tfg_frontend/app/modules/home/widgets/admin/airports/airport_card.dart';
 
 class AirportsList extends StatelessWidget {
 
-  const AirportsList({Key? key}) : super(key: key);
+  final RxList<AirportModel> airports;
+
+  const AirportsList({
+    Key? key,
+    required this.airports
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,18 +23,23 @@ class AirportsList extends StatelessWidget {
           style: title1TextStyle,
         ),
         SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-        ListView.builder(
+        Obx(() =>ListView.builder(
           shrinkWrap: true,
-          itemCount: 5, 
+          itemCount: airports.length, 
           itemBuilder: (context, index) {
-            return Card(
-              child: ListTile(
-                title: Text('Airport ${index + 1}'),
-                subtitle: Text('Details of Airport ${index + 1}'),
-              ),
+            return AirportCard(
+              id: airports[index].id!,
+              name: airports[index].name!,
+              elevation: airports[index].elevation!,
+              prefixElevation: '${'elevation'.tr}: ',
+              oaciCode: airports[index].oaciCode!,
+              prefixOaciCode: '${'oaciCode'.tr}: ',
+              iataCode: airports[index].iataCode!,
+              prefixIataCode: '${'iataCode'.tr}: ',
+              icon: Icons.connecting_airports,
             );
           },
-        ),
+        )),
       ],
     );
   }

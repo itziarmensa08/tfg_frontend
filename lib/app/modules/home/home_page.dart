@@ -8,7 +8,9 @@ import 'package:tfg_frontend/app/modules/home/widgets/admin/admin_dashboard.dart
 import 'package:tfg_frontend/app/modules/home/widgets/admin/aircrafts/add_aircraft.dart';
 import 'package:tfg_frontend/app/modules/home/widgets/admin/aircrafts/aircrafts.dart';
 import 'package:tfg_frontend/app/modules/home/widgets/admin/aircrafts/edit_aircraft.dart';
+import 'package:tfg_frontend/app/modules/home/widgets/admin/airports/add_airport.dart';
 import 'package:tfg_frontend/app/modules/home/widgets/admin/airports/airports.dart';
+import 'package:tfg_frontend/app/modules/home/widgets/admin/airports/edit_airport.dart';
 import 'package:tfg_frontend/app/modules/home/widgets/list_sidemenu.dart';
 import 'package:tfg_frontend/app/modules/home/widgets/principal_page.dart';
 import 'package:tfg_frontend/app/modules/home/widgets/admin/users/add_user.dart';
@@ -104,7 +106,11 @@ class HomePage extends GetView<HomeController> {
                     } else if (controller.seeEditAircraft.value) {
                       return const EditAircraft();
                     } else if (controller.seeAirports.value) {
-                      return const AirportsList();
+                      return AirportsList(airports: controller.airports);
+                    } else if (controller.seeAddAirports.value) {
+                      return const AddAirport();
+                    } else if (controller.seeEditAirports.value) {
+                      return const EditAirport();
                     } else {
                       return const Text('Cargando ...');
                     }

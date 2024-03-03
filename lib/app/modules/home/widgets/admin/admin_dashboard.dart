@@ -110,7 +110,7 @@ class AdminDashboard extends StatelessWidget {
                       color: darkGray,
                       onTap: () {
                         controllerHome.seeAdmin.value = false;
-                        controllerHome.seeAirports.value = true;
+                        controllerHome.seeAddAirports.value = true;
                       },
                     ),
                   ],

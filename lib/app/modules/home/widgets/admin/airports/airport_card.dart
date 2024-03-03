@@ -4,55 +4,67 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tfg_frontend/app/core/theme/color_theme.dart';
 import 'package:tfg_frontend/app/core/theme/text_theme.dart';
-import 'package:tfg_frontend/app/data/model/aircraft_model.dart';
+import 'package:tfg_frontend/app/data/model/airport_model.dart';
 import 'package:tfg_frontend/app/data/provider/api.dart';
 import 'package:tfg_frontend/app/data/repository/home_repository.dart';
 import 'package:tfg_frontend/app/modules/home/home_controller.dart';
-import 'package:tfg_frontend/app/modules/home/widgets/admin/aircrafts/edit_aircraft.dart';
+import 'package:tfg_frontend/app/modules/home/widgets/admin/airports/edit_airport.dart';
 
-class AircraftCard extends StatefulWidget {
+class AirportCard extends StatefulWidget {
   final String id;
   final String name;
-  final String metro;
+  final double elevation;
+  final String prefixElevation;
+  final String oaciCode;
+  final String prefixOaciCode;
+  final String iataCode;
+  final String prefixIataCode;
   final IconData icon;
 
-  const AircraftCard({
+  const AirportCard({
     required this.id,
     required this.name,
-    required this.metro,
+    required this.elevation,
+    required this.prefixElevation,
+    required this.oaciCode,
+    required this.prefixOaciCode,
+    required this.iataCode,
+    required this.prefixIataCode,
     required this.icon,
     Key? key,
   }) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
-  _AircraftCardState createState() => _AircraftCardState();
+  _AirportCardState createState() => _AirportCardState();
 }
 
-class _AircraftCardState extends State<AircraftCard> {
+class _AirportCardState extends State<AirportCard> {
   bool _isHovered = false;
   final HomeController controllerHome = Get.put(HomeController(HomeRepository(MyApi())));
-  final EditAircraftController controllerEdit = Get.put(EditAircraftController(HomeRepository(MyApi())));
+  final EditAirportController controllerEdit = Get.put(EditAirportController(HomeRepository(MyApi())));
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () async {
-        AircraftModel? aircraft = await HomeRepository.getAircraftById(context, widget.id);
-        if(aircraft != null) {
-          controllerEdit.aircraft.value = aircraft;
-          controllerEdit.name.text = aircraft.name!;
-          controllerEdit.metro.text = aircraft.metro!;
+        AirportModel? airport = await HomeRepository.getAirportById(context, widget.id);
+        if(airport != null) {
+          controllerEdit.airport.value = airport;
+          controllerEdit.name.text = airport.name!;
+          controllerEdit.elevation.text = airport.elevation!.toString();
+          controllerEdit.oaciCode.text = airport.oaciCode!;
+          controllerEdit.iataCode.text = airport.iataCode!;
         }      
-        controllerHome.seeAircrafts.value = false;
-        controllerHome.seeEditAircraft.value = true;
+        controllerHome.seeAirports.value = false;
+        controllerHome.seeEditAirports.value = true;
       },
       child: Card(
         color: white,
         elevation: 5, 
         shape: RoundedRectangleBorder(
           side: BorderSide(
-            color: _isHovered ? orange : Colors.transparent,
+            color: _isHovered ? darkGray : Colors.transparent,
             width: 2.0,
           ),
           borderRadius: BorderRadius.circular(15.0),
@@ -69,7 +81,7 @@ class _AircraftCardState extends State<AircraftCard> {
                 Icon(
                   widget.icon,
                   size: 50,
-                  color: orange,
+                  color: darkGray,
                 ),
                 const SizedBox(width: 30),
                 Expanded(
@@ -92,22 +104,46 @@ class _AircraftCardState extends State<AircraftCard> {
                           Row(
                             children: [
                               Text(
-                                'Metro: ',
+                                widget.prefixElevation,
                                 style: textBlackTextStyle.copyWith(fontWeight: FontWeight.bold)
                               ),
                               Text(
-                                widget.metro,
+                                widget.elevation.toString(),
+                                style: textBlackTextStyle
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                widget.prefixOaciCode,
+                                style: textBlackTextStyle.copyWith(fontWeight: FontWeight.bold)
+                              ),
+                              Text(
+                                widget.oaciCode,
+                                style: textBlackTextStyle
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                widget.prefixIataCode,
+                                style: textBlackTextStyle.copyWith(fontWeight: FontWeight.bold)
+                              ),
+                              Text(
+                                widget.iataCode,
                                 style: textBlackTextStyle
                               ),
                             ],
                           ),
                           Icon(
                             Icons.arrow_forward,
-                            color: _isHovered ? orange : white,
+                            color: _isHovered ? darkGray : white,
                           ), 
                         ],
                       ),
-                      const SizedBox(height: 20),  
+                      const SizedBox(height: 10),  
                     ],
                   ),
                 )  

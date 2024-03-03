@@ -52,6 +52,8 @@ List<SideMenuItem> buildSideMenuItems(controller) {
           controller.seeAddUsers.value = false;
           controller.editUser.value = false;
           controller.seeAirports.value = false;
+          controller.seeAddAirports.value = false;
+          controller.seeEditAirports.value = false;
           controller.sideMenu.changePage(index);
         },
         icon: const Icon(Icons.admin_panel_settings),
