@@ -1,26 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
-import 'package:tfg_frontend/app/data/repository/register_repository.dart';
-import 'package:tfg_frontend/app/modules/home/widgets/users/add_user_form.dart';
+import 'package:get/get.dart';
+import 'package:tfg_frontend/app/data/model/user_model.dart';
+import 'package:tfg_frontend/app/data/repository/home_repository.dart';
+import 'package:tfg_frontend/app/modules/home/widgets/admin/users/edit_user_form.dart';
 
-class AddUserController extends GetxController {
+class EditUserController extends GetxController {
 
-  final RegisterRepository repository;
+  final HomeRepository repository;
 
-  AddUserController(this.repository);
+  EditUserController(this.repository);
   
+  final Rx<UserModel> user = UserModel().obs;
+
   final TextEditingController name = TextEditingController();
   final TextEditingController surname = TextEditingController();
   final TextEditingController username = TextEditingController();
   final TextEditingController email = TextEditingController();
-  final TextEditingController password1 = TextEditingController();
-  final TextEditingController password2 = TextEditingController();
+  TextEditingController telephone = TextEditingController();
+  TextEditingController dateborn = TextEditingController();
+
+  DateTime? date;
   String? role;
 
 }
 
-class AddUser extends StatelessWidget {
-  const AddUser({super.key});
+class EditUser extends StatelessWidget {
+  const EditUser({super.key});
 
 
   @override
@@ -39,7 +44,7 @@ class AddUser extends StatelessWidget {
                 child: const Icon(Icons.person, size: 70.0, color: Colors.white,),
               ),
               const SizedBox(height: 40),
-              AddUserForm(),
+              EditUserForm(),
               const SizedBox(height: 40),
             ],
           ),

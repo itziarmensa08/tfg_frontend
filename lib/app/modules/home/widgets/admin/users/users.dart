@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tfg_frontend/app/core/theme/text_theme.dart';
 import 'package:tfg_frontend/app/data/model/user_model.dart';
-import 'package:tfg_frontend/app/modules/home/widgets/users/user_card.dart';
+import 'package:tfg_frontend/app/modules/home/widgets/admin/users/user_card.dart';
 import 'package:intl/intl.dart';
 
 class UserList extends StatelessWidget {

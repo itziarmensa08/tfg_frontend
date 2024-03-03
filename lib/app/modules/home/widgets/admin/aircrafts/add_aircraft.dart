@@ -1,25 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:tfg_frontend/app/core/theme/color_theme.dart';
-import 'package:tfg_frontend/app/data/model/aircraft_model.dart';
 import 'package:tfg_frontend/app/data/repository/home_repository.dart';
-import 'package:tfg_frontend/app/modules/home/widgets/aircrafts/edit_aircraft_form.dart';
+import 'package:tfg_frontend/app/modules/home/widgets/admin/aircrafts/add_aircraft_form.dart';
 
-class EditAircraftController extends GetxController {
+class AddAircraftController extends GetxController {
 
   final HomeRepository repository;
 
-  EditAircraftController(this.repository);
+  AddAircraftController(this.repository);
   
   final TextEditingController name = TextEditingController();
   final TextEditingController metro = TextEditingController();
 
-  final Rx<AircraftModel> aircraft = AircraftModel().obs;
-
 }
 
-class EditAircraft extends StatelessWidget {
-  const EditAircraft({super.key});
+class AddAircraft extends StatelessWidget {
+  const AddAircraft({super.key});
 
 
   @override
@@ -37,7 +34,7 @@ class EditAircraft extends StatelessWidget {
               child: Icon(Icons.airplanemode_active, size: 70.0, color: Colors.white,),
             ),
             const SizedBox(height: 40),
-            EditAircraftForm(),
+            AddAircraftForm(),
             const SizedBox(height: 40),
           ],
         ),

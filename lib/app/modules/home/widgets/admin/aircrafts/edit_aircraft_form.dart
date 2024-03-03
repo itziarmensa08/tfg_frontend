@@ -10,7 +10,7 @@ import 'package:tfg_frontend/app/data/model/aircraft_model.dart';
 import 'package:tfg_frontend/app/data/provider/api.dart';
 import 'package:tfg_frontend/app/data/repository/home_repository.dart';
 import 'package:tfg_frontend/app/modules/home/home_controller.dart';
-import 'package:tfg_frontend/app/modules/home/widgets/aircrafts/edit_aircraft.dart';
+import 'package:tfg_frontend/app/modules/home/widgets/admin/aircrafts/edit_aircraft.dart';
 
 class EditAircraftForm extends Container {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();

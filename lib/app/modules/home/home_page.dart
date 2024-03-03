@@ -4,16 +4,16 @@ import 'package:tfg_frontend/app/core/theme/color_theme.dart';
 import 'package:tfg_frontend/app/core/theme/text_theme.dart';
 import 'package:tfg_frontend/app/modules/home/home_controller.dart';
 import 'package:easy_sidemenu/easy_sidemenu.dart';
-import 'package:tfg_frontend/app/modules/home/widgets/admin_dashboard.dart';
-import 'package:tfg_frontend/app/modules/home/widgets/aircrafts/add_aircraft.dart';
-import 'package:tfg_frontend/app/modules/home/widgets/aircrafts/aircrafts.dart';
-import 'package:tfg_frontend/app/modules/home/widgets/aircrafts/edit_aircraft.dart';
-import 'package:tfg_frontend/app/modules/home/widgets/airports/airports.dart';
+import 'package:tfg_frontend/app/modules/home/widgets/admin/admin_dashboard.dart';
+import 'package:tfg_frontend/app/modules/home/widgets/admin/aircrafts/add_aircraft.dart';
+import 'package:tfg_frontend/app/modules/home/widgets/admin/aircrafts/aircrafts.dart';
+import 'package:tfg_frontend/app/modules/home/widgets/admin/aircrafts/edit_aircraft.dart';
+import 'package:tfg_frontend/app/modules/home/widgets/admin/airports/airports.dart';
 import 'package:tfg_frontend/app/modules/home/widgets/list_sidemenu.dart';
 import 'package:tfg_frontend/app/modules/home/widgets/principal_page.dart';
-import 'package:tfg_frontend/app/modules/home/widgets/users/add_user.dart';
-import 'package:tfg_frontend/app/modules/home/widgets/users/edit_user.dart';
-import 'package:tfg_frontend/app/modules/home/widgets/users/users.dart';
+import 'package:tfg_frontend/app/modules/home/widgets/admin/users/add_user.dart';
+import 'package:tfg_frontend/app/modules/home/widgets/admin/users/edit_user.dart';
+import 'package:tfg_frontend/app/modules/home/widgets/admin/users/users.dart';
 
 class HomePage extends GetView<HomeController> {
   const HomePage({super.key});

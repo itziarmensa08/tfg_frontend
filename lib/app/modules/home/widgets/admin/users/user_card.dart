@@ -8,7 +8,7 @@ import 'package:tfg_frontend/app/data/model/user_model.dart';
 import 'package:tfg_frontend/app/data/provider/api.dart';
 import 'package:tfg_frontend/app/data/repository/home_repository.dart';
 import 'package:tfg_frontend/app/modules/home/home_controller.dart';
-import 'package:tfg_frontend/app/modules/home/widgets/users/edit_user.dart';
+import 'package:tfg_frontend/app/modules/home/widgets/admin/users/edit_user.dart';
 
 class UserCard extends StatefulWidget {
   final String id;

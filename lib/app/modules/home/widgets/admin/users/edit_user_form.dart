@@ -2,22 +2,23 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:intl/intl.dart';
 import 'package:tfg_frontend/app/core/theme/color_theme.dart';
 import 'package:tfg_frontend/app/core/theme/text_theme.dart';
+import 'package:tfg_frontend/app/core/utils/helpers/alert.dart';
+import 'package:tfg_frontend/app/core/utils/helpers/toast.dart';
 import 'package:tfg_frontend/app/data/model/user_model.dart';
 import 'package:tfg_frontend/app/data/provider/api.dart';
 import 'package:tfg_frontend/app/data/repository/home_repository.dart';
-import 'package:tfg_frontend/app/data/repository/register_repository.dart';
 import 'package:tfg_frontend/app/modules/home/home_controller.dart';
-import 'package:tfg_frontend/app/modules/home/widgets/users/add_user.dart';
+import 'package:tfg_frontend/app/modules/home/widgets/admin/users/edit_user.dart';
 
-class AddUserForm extends Container {
+class EditUserForm extends Container {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final AddUserController controller = Get.put(AddUserController(RegisterRepository(MyApi())));
+  final EditUserController controller = Get.put(EditUserController(HomeRepository(MyApi())));
   final HomeController controllerHome = Get.put(HomeController(HomeRepository(MyApi())));
 
-  AddUserForm({super.key});
+  EditUserForm({super.key});
 
   String? textValidator (String? value) {
     if (value == null || value.isEmpty) {
@@ -44,6 +45,17 @@ class AddUserForm extends Container {
       const pattern = r'\b[A-Za-z0-9._%+-]+@flightlinebcn\.com\b';
       if (!RegExp(pattern).hasMatch(value)) {
         return 'validEmail'.tr;
+      }
+    }
+    return null;
+  }
+
+  String? phoneValidator(String? value) {
+    if (value == null || value.isEmpty) {
+    } else {
+      final phoneRegex = RegExp(r'^[0-9]{9}$');
+      if (!phoneRegex.hasMatch(value)) {
+        return 'invalidPhone'.tr; 
       }
     }
     return null;
@@ -156,14 +168,13 @@ class AddUserForm extends Container {
           ),
           const SizedBox(height: 20),
           TextFormField(
-            controller: controller.password1,
+            controller: controller.telephone,
             cursorColor: Theme.of(context).hintColor,
             style: textDarkGrayTextStyle,
-            obscureText: true,
             decoration: InputDecoration(
               filled: true,
               fillColor: Theme.of(context).colorScheme.background,
-              labelText: 'pass'.tr,
+              labelText: 'telephone'.tr,
               labelStyle: textDarkGrayTextStyle,
               floatingLabelStyle: textOrangeTextStyle,
               enabledBorder: const OutlineInputBorder(
@@ -176,20 +187,53 @@ class AddUserForm extends Container {
                   color: darkGray,
                 ),
               ),
-              suffixIcon: const Icon(Icons.key, color: Color(0xFFCBC8C8),)
+              suffixIcon: const Icon(Icons.phone, color: Color(0xFFCBC8C8),),
             ),
-            validator: (value) => passwordValidator(value, controller.password2.text),
+            validator: (value) => phoneValidator(value),
           ),
           const SizedBox(height: 20),
           TextFormField(
-            controller: controller.password2,
-            cursorColor: Theme.of(context).hintColor,
+            controller: controller.dateborn,
+            readOnly: true,
             style: textDarkGrayTextStyle,
-            obscureText: true,
+            onTap: () async {
+              final DateTime? pickedDate = await showDatePicker(
+                context: context,
+                initialDate: DateTime.now(),
+                firstDate: DateTime(1900),
+                lastDate: DateTime.now(),
+                builder: (context, child) {
+                  return Theme(
+                    data: Theme.of(context).copyWith(
+                      colorScheme: const ColorScheme.light(
+                        primary: darkGray, 
+                        onPrimary: Colors.white, 
+                        surface: Colors.white, 
+                      ),
+                      dialogBackgroundColor:Colors.white,
+                      textButtonTheme: TextButtonThemeData(
+                        style: TextButton.styleFrom(
+                          foregroundColor: darkGray,
+                        ),
+                      ),
+                      textTheme: const TextTheme(
+                        titleMedium: TextStyle(color: darkGray),
+                      ),
+                    ),
+                    child: child!,
+                  );
+                },
+              );
+              if (pickedDate != null) {
+                controller.date = pickedDate;
+                String formattedDate = DateFormat('yyyy-MM-dd').format(pickedDate);
+                controller.dateborn.text = formattedDate;
+              }
+            },
             decoration: InputDecoration(
               filled: true,
               fillColor: Theme.of(context).colorScheme.background,
-              labelText: 'repeatPass'.tr,
+              labelText: 'dateBorn'.tr,
               labelStyle: textDarkGrayTextStyle,
               floatingLabelStyle: textOrangeTextStyle,
               enabledBorder: const OutlineInputBorder(
@@ -202,9 +246,8 @@ class AddUserForm extends Container {
                   color: darkGray,
                 ),
               ),
-              suffixIcon: const Icon(Icons.key, color: Color(0xFFCBC8C8),)
+              suffixIcon: const Icon(Icons.date_range, color: Color(0xFFCBC8C8)),
             ),
-            validator: (value) => passwordValidator(value, controller.password1.text),
           ),
           const SizedBox(height: 20),
           DropdownButtonFormField<String>(
@@ -238,32 +281,74 @@ class AddUserForm extends Container {
             icon: const Icon(Icons.arrow_drop_down, color: darkGray),
           ),
           const SizedBox(height: 40),
-          ElevatedButton.icon(
-            style: buttonGrayStyle,
-            onPressed: () async {
-              if (_formKey.currentState!.validate()) {
-                SharedPreferences prefs = await SharedPreferences.getInstance(); 
-                UserModel user = UserModel(
-                  name: controller.name.text, 
-                  surname: controller.surname.text, 
-                  username: controller.username.text, 
-                  email: controller.email.text,
-                  password: controller.password1.text,
-                  role: controller.role,
-                  language: prefs.getString('language') ?? 'es'
-                );
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton.icon(
+                style: buttonGrayStyle,
+                onPressed: () async {
+                  if (_formKey.currentState!.validate()) {
+                    controller.user.value.name = controller.name.text;
+                    controller.user.value.surname = controller.surname.text;
+                    controller.user.value.username = controller.username.text;
+                    controller.user.value.email = controller.email.text;
+                    if (controller.telephone.text.isNotEmpty) {
+                      controller.user.value.telephone = int.tryParse(controller.telephone.text);
+                    }
+                    if (controller.date != null) {
+                      controller.user.value.dateBorn = controller.date;
+                    }
+                    if (controller.role != null) {
+                      controller.user.value.role = controller.role;
+                    }
 
-                await RegisterRepository.register(user, context);
-                List<UserModel>? users = await HomeRepository.getUsers(context);
-                if (users != null) {
-                  controllerHome.users.value = users;
-                }
-                controllerHome.seeUsers.value = true;
-                controllerHome.seeAddUsers.value = false;
-              }
-            },
-            icon: Icon(Icons.save, color: Theme.of(context).primaryColor),
-            label: Text('addUser'.tr, style: textPrimaryColorTextStyle),
+                    bool? success = await HomeRepository.updateUser(context, controller.user.value.id!, controller.user.value);
+
+                    if (success != null || success == true) {
+                      List<UserModel>? users = await HomeRepository.getUsers(context);
+                      if (users != null) {
+                        controllerHome.users.value = users;
+                      }
+                      controllerHome.seeUsers.value = true;
+                      controllerHome.editUser.value = false;
+                      ToastUtils.showSuccessToast(context, 'editUserSuccess'.tr);
+                    }
+                  }
+                },
+                icon: Icon(Icons.save, color: Theme.of(context).primaryColor),
+                label: Text('editUser'.tr, style: textPrimaryColorTextStyle),
+              ),
+              const SizedBox(width: 40),
+              ElevatedButton.icon(
+                style: buttonGrayStyle,
+                onPressed: () async {
+                  showAlert(
+                    context, 
+                    'deleteUser'.tr, 
+                    'confirmDeleteUser'.tr, 
+                    'yes'.tr, 
+                    'no'.tr,
+                    const Color.fromRGBO(255, 0, 0, 0.5),
+                    () async {
+                      await HomeRepository.deleteUser(context, controller.user.value.id!);
+                      List<UserModel>? users = await HomeRepository.getUsers(context);
+                      if (users != null) {
+                        controllerHome.users.value = users;
+                      }
+                      controllerHome.seeUsers.value = true;
+                      controllerHome.editUser.value = false;
+                      Navigator.of(context).pop();
+                    },
+                    () {
+                      Navigator.of(context).pop();
+                    }
+                  );
+                },
+                icon: const Icon(Icons.delete, color: Colors.red),
+                label: Text('deleteUser'.tr, style: textPrimaryColorTextStyle.copyWith(color: Colors.red)),
+              ),
+            ],
           ),
         ],
       )

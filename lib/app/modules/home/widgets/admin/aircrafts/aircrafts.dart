@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tfg_frontend/app/core/theme/text_theme.dart';
 import 'package:tfg_frontend/app/data/model/aircraft_model.dart';
-import 'package:tfg_frontend/app/modules/home/widgets/aircrafts/aircraft_card.dart';
+import 'package:tfg_frontend/app/modules/home/widgets/admin/aircrafts/aircraft_card.dart';
 
 class AircraftsList extends StatelessWidget {
 
