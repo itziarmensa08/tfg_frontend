@@ -9,7 +9,6 @@ import 'package:tfg_frontend/app/data/provider/api.dart';
 import 'package:tfg_frontend/app/data/repository/home_repository.dart';
 import 'package:tfg_frontend/app/modules/home/home_controller.dart';
 import 'package:tfg_frontend/app/modules/home/widgets/users/edit_user.dart';
-import 'package:tfg_frontend/app/routes/app_pages.dart';
 
 class UserCard extends StatefulWidget {
   final String id;
@@ -217,17 +216,9 @@ class _UserCardState extends State<UserCard> {
                               ),
                             ],
                           ),
-                          GestureDetector(
-                            onTap: () {
-                              Get.toNamed(
-                                Routes.editUser, 
-                                parameters: {"userId": widget.id}
-                              );
-                            },
-                            child: Icon(
-                              Icons.arrow_forward,
-                              color: _isHovered ? Theme.of(context).primaryColor : white,
-                            ),
+                          Icon(
+                            Icons.arrow_forward,
+                            color: _isHovered ? Theme.of(context).primaryColor : white,
                           ),
                         ],
                       ),

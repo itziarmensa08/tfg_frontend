@@ -77,10 +77,10 @@ class AdminDashboard extends StatelessWidget {
                       title: 'addAircraftTitle'.tr,
                       subtitle: 'addAircraftSubtitle'.tr,
                       icon: Icons.add_circle_outline_outlined,
-                      color: Theme.of(context).primaryColor,
+                      color: orange,
                       onTap: () {
                         controllerHome.seeAdmin.value = false;
-                        controllerHome.seeUsers.value = true;
+                        controllerHome.seeAddAircraft.value = true;
                       },
                     ),
                   ],
@@ -178,7 +178,7 @@ class _DashboardCardState extends State<DashboardCard> {
                   Icon(
                     widget.icon,
                     size: 40,
-                    color: Theme.of(context).primaryColor,
+                    color: widget.color,
                   ),
                   const SizedBox(height: 10),
                   Text(

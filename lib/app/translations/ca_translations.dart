@@ -1,6 +1,11 @@
 
 final Map<String, String> ca = {
 
+  //General
+  'yes': 'Si',
+  'no': 'No',
+
+
   //Languages
   'en_US': 'Anglès',
   'ca': 'Català',
@@ -75,11 +80,21 @@ final Map<String, String> ca = {
   'userDeleted': 'Usuari borrat correctament',
   'deleteUser': 'Eliminar usuari',
   'confirmDeleteUser': 'Estàs segur que vols borrar aquest usuari?',
-  'yes': 'Si',
-  'no': 'No',
 
   //Edit user
   'editUser': 'Editar usuari',
   'invalidPhone': 'Telèfon no vàlid',
-  'editUserSuccess': 'Usuari editat correctament'
+  'editUserSuccess': 'Usuari editat correctament',
+
+  //Add aircraft
+  'succesAddAircraft': 'Aeronau registrada correctament',
+  'addAircraft': 'Guardar aeronau',
+
+  //Edit aircraft
+  'editAircraft': 'Editar aeronau',
+  'editAircraftSuccess': 'Aeronau editada correctament',
+  'aircraftDeleted': 'Aeronau borrada correctament',
+  'deleteAircraft': 'Eliminar aeronau',
+  'confirmDeleteAircraft': 'Estàs segur que vols borrar aquesta aeronau?',
+  
 };

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tfg_frontend/app/data/model/aircraft_model.dart';
 import 'package:tfg_frontend/app/data/model/user_model.dart';
 import 'package:tfg_frontend/app/data/provider/api.dart';
 import 'package:tfg_frontend/app/data/repository/home_repository.dart';
@@ -32,6 +33,13 @@ class HomeBinding implements Bindings {
 
     if (users != null) {
       controller.users.value = users;
+    }
+
+    // ignore: use_build_context_synchronously
+    List<AircraftModel>? aircrafts = await HomeRepository.getAircrafts(context);
+
+    if (aircrafts != null) {
+      controller.aircrafts.value = aircrafts;
     }
 
   }

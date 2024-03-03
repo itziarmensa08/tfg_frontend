@@ -309,9 +309,9 @@ class EditUserForm extends Container {
                       List<UserModel>? users = await HomeRepository.getUsers(context);
                       if (users != null) {
                         controllerHome.users.value = users;
-                        controllerHome.seeUsers.value = true;
-                        controllerHome.editUser.value = false;
                       }
+                      controllerHome.seeUsers.value = true;
+                      controllerHome.editUser.value = false;
                       ToastUtils.showSuccessToast(context, 'editUserSuccess'.tr);
                     }
                   }
@@ -335,9 +335,9 @@ class EditUserForm extends Container {
                       List<UserModel>? users = await HomeRepository.getUsers(context);
                       if (users != null) {
                         controllerHome.users.value = users;
-                        controllerHome.seeUsers.value = true;
-                        controllerHome.editUser.value = false;
                       }
+                      controllerHome.seeUsers.value = true;
+                      controllerHome.editUser.value = false;
                       Navigator.of(context).pop();
                     },
                     () {

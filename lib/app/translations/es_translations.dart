@@ -74,12 +74,23 @@ final Map<String, String> es = {
   'notSpecified': 'No especificado',
   'userDeleted': 'Usuario borrado correctamente',
   'deleteUser': 'Eliminar usuario',
-  'confirmDeleteUser': '¿Estás seguro de que quieres borrar ese usuario?',
+  'confirmDeleteUser': '¿Estás seguro de que quieres borrar este usuario?',
   'yes': 'Si',
   'no': 'No',
 
   //Edit user
   'editUser': 'Editar usuario',
   'invalidPhone': 'Teléfono no válido',
-  'editUserSuccess': 'Usuario editado correctamente'
+  'editUserSuccess': 'Usuario editado correctamente',
+
+  //Add aircraft
+  'succesAddAircraft': 'Aeronave registrada correctamente',
+  'addAircraft': 'Guardar aeronave',
+
+  //Edit aircraft
+  'editAircraft': 'Editar aeronave',
+  'editAircraftSuccess': 'Aeronave editada correctamente',
+  'aircraftDeleted': 'Aeronave borrada correctamente',
+  'deleteAircraft': 'Eliminar aeronave',
+  'confirmDeleteAircraft': '¿Estás seguro de que quieres borrar esta aeronave?',
 };

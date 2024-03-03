@@ -81,5 +81,16 @@ final Map<String, String> en = {
   //Edit user
   'editUser': 'Edit user',
   'invalidPhone': 'Invalid phone',
-  'editUserSuccess': 'User updated successfully'
+  'editUserSuccess': 'User updated successfully',
+
+  //Add aircraft
+  'succesAddAircraft': 'Aircraft added successfully',
+  'addAircraft': 'Save aircraft',
+
+  //Edit aircraft
+  'editAircraft': 'Edit aircraft',
+  'editAircraftSuccess': 'Aircraft updated successfully',
+  'aircraftDeleted': 'Aircraft deleted successfully',
+  'deleteAircraft': 'Delete aircraft',
+  'confirmDeleteAircraft': 'Are you shure you want to delete this aircraft?',
 };

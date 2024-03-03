@@ -46,7 +46,10 @@ List<SideMenuItem> buildSideMenuItems(controller) {
         onTap: (index, _) {
           controller.seeAdmin.value = true;
           controller.seeAircrafts.value = false;
+          controller.seeAddAircraft.value = false;
+          controller.seeEditAircraft.value = false;
           controller.seeUsers.value = false;
+          controller.seeAddUsers.value = false;
           controller.editUser.value = false;
           controller.seeAirports.value = false;
           controller.sideMenu.changePage(index);

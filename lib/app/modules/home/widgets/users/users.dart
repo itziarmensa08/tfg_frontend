@@ -18,38 +18,40 @@ class UserList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(height: MediaQuery.of(context).size.height * 0.1),
-        Text(
-          'usersList'.tr,
-          style: title1TextStyle,
-        ),
-        SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-        Obx(() =>ListView.builder(
-          shrinkWrap: true,
-          itemCount: users.length, 
-          itemBuilder: (context, index) {
-            return UserCard(
-              id: users[index].id!,
-              name: '${users[index].name} ${users[index].surname}',
-              prefixUsername: '${'username'.tr}: ',
-              username: '${users[index].username}',
-              prefixEmail: '${'email'.tr}: ',
-              email: '${users[index].email}',
-              prefixRole: '${'rol'.tr}: ',
-              role: '${users[index].role}',
-              prefixTelephone: '${'telephone'.tr}: ',
-              telephone: '${users[index].telephone}' == 'null' ? 'notSpecified'.tr : '${users[index].telephone}',
-              prefixBorn: '${'dateBorn'.tr}: ',
-              dateBorn: '${users[index].dateBorn}' == 'null' ? 'notSpecified'.tr : DateFormat.yMMMd().format(users[index].dateBorn!),
-              prefixLang: '${'language'.tr}: ',
-              lang: '${users[index].language}'.tr,
-              icon: Icons.person,
-            );
-          },
-        )),
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          SizedBox(height: MediaQuery.of(context).size.height * 0.1),
+          Text(
+            'usersList'.tr,
+            style: title1TextStyle,
+          ),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+          Obx(() =>ListView.builder(
+            shrinkWrap: true,
+            itemCount: users.length, 
+            itemBuilder: (context, index) {
+              return UserCard(
+                id: users[index].id!,
+                name: '${users[index].name} ${users[index].surname}',
+                prefixUsername: '${'username'.tr}: ',
+                username: '${users[index].username}',
+                prefixEmail: '${'email'.tr}: ',
+                email: '${users[index].email}',
+                prefixRole: '${'rol'.tr}: ',
+                role: '${users[index].role}',
+                prefixTelephone: '${'telephone'.tr}: ',
+                telephone: '${users[index].telephone}' == 'null' ? 'notSpecified'.tr : '${users[index].telephone}',
+                prefixBorn: '${'dateBorn'.tr}: ',
+                dateBorn: '${users[index].dateBorn}' == 'null' ? 'notSpecified'.tr : DateFormat.yMMMd().format(users[index].dateBorn!),
+                prefixLang: '${'language'.tr}: ',
+                lang: '${users[index].language}'.tr,
+                icon: Icons.person,
+              );
+            },
+          )),
+        ],
+      ),
     );
   }
 }
