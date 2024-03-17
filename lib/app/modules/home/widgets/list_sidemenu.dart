@@ -1,8 +1,21 @@
+
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:easy_sidemenu/easy_sidemenu.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tfg_frontend/app/data/provider/api.dart';
+import 'package:tfg_frontend/app/data/repository/home_repository.dart';
+import 'package:tfg_frontend/app/modules/home/widgets/admin/users/edit_user.dart';
+import 'package:tfg_frontend/app/modules/home/widgets/new_analysis/new_analysis.dart';
 
 List<SideMenuItem> buildSideMenuItems(controller) {
+
+  BuildContext context = Get.context!;
+  final EditUserController controllerEdit = Get.put(EditUserController(HomeRepository(MyApi())));
+  final NewAnalysisController controllerNew = Get.put(NewAnalysisController());
+
   List<SideMenuItem> items = [
     SideMenuItem(
       title: 'home'.tr,
@@ -14,6 +27,8 @@ List<SideMenuItem> buildSideMenuItems(controller) {
     SideMenuItem(
       title: 'newAnalisis'.tr,
       onTap: (index, _) {
+        controllerNew.addAirport.value = false;
+        controllerNew.selectedAirport.value = null;
         controller.sideMenu.changePage(index);
       },
       icon: const Icon(Icons.library_add),
@@ -27,7 +42,32 @@ List<SideMenuItem> buildSideMenuItems(controller) {
     ),
     SideMenuItem(
       title: 'profile'.tr,
-      onTap: (index, _) {
+      onTap: (index, _) async {
+        SharedPreferences prefs = await SharedPreferences.getInstance();  
+        var idUser = prefs.getString('id');
+        if (idUser != null) {
+          var user = await HomeRepository.getUserById(context, idUser);
+          if (user != null) {
+            controllerEdit.user.value = user;
+            controllerEdit.name.text = user.name!;
+            controllerEdit.surname.text = user.surname!;
+            controllerEdit.username.text = user.username!;
+            controllerEdit.email.text = user.email!;
+            controllerEdit.role = user.role!;
+
+            if (user.telephone != null) {
+              controllerEdit.telephone.text = user.telephone.toString();
+            } else {
+              controllerEdit.telephone = TextEditingController();
+            }
+
+            if (user.dateBorn != null) {
+              controllerEdit.dateborn.text = user.dateBorn.toString();
+            } else {
+              controllerEdit.dateborn = TextEditingController();
+            }
+          }
+        }
         controller.sideMenu.changePage(index);
       },
       icon: const Icon(Icons.person),

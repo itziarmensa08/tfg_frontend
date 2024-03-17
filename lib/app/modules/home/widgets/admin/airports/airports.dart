@@ -15,32 +15,34 @@ class AirportsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(height: MediaQuery.of(context).size.height * 0.1),
-        Text(
-          'airportsList'.tr,
-          style: title1TextStyle,
-        ),
-        SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-        Obx(() =>ListView.builder(
-          shrinkWrap: true,
-          itemCount: airports.length, 
-          itemBuilder: (context, index) {
-            return AirportCard(
-              id: airports[index].id!,
-              name: airports[index].name!,
-              elevation: airports[index].elevation!,
-              prefixElevation: '${'elevation'.tr}: ',
-              oaciCode: airports[index].oaciCode!,
-              prefixOaciCode: '${'oaciCode'.tr}: ',
-              iataCode: airports[index].iataCode!,
-              prefixIataCode: '${'iataCode'.tr}: ',
-              icon: Icons.connecting_airports,
-            );
-          },
-        )),
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          SizedBox(height: MediaQuery.of(context).size.height * 0.1),
+          Text(
+            'airportsList'.tr,
+            style: title1TextStyle,
+          ),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+          Obx(() =>ListView.builder(
+            shrinkWrap: true,
+            itemCount: airports.length, 
+            itemBuilder: (context, index) {
+              return AirportCard(
+                id: airports[index].id!,
+                name: airports[index].name!,
+                elevation: airports[index].elevation!,
+                prefixElevation: '${'elevation'.tr}: ',
+                oaciCode: airports[index].oaciCode!,
+                prefixOaciCode: '${'oaciCode'.tr}: ',
+                iataCode: airports[index].iataCode!,
+                prefixIataCode: '${'iataCode'.tr}: ',
+                icon: Icons.connecting_airports,
+              );
+            },
+          )),
+        ],
+      ),
     );
   }
 }

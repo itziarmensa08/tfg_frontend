@@ -1,6 +1,13 @@
 
 final Map<String, String> es = {
 
+  //General
+  'yes': 'Si',
+  'no': 'No',
+  'confirm': 'Confirmar',
+  'next': 'Siguiente',
+  'cancel': 'Cancelar',
+
   //Languages
   'en_US': 'Inglés',
   'ca': 'Catalán',
@@ -75,8 +82,6 @@ final Map<String, String> es = {
   'userDeleted': 'Usuario borrado correctamente',
   'deleteUser': 'Eliminar usuario',
   'confirmDeleteUser': '¿Estás seguro de que quieres borrar este usuario?',
-  'yes': 'Si',
-  'no': 'No',
 
   //Edit user
   'editUser': 'Editar usuario',
@@ -105,4 +110,10 @@ final Map<String, String> es = {
   'editAirportSuccess': 'Aeropuerto editado correctamente',
   'deleteAirport': 'Eliminar aeropuerto',
   'confirmDeleteAirport': '¿Estás seguro de que quieres borrar este aeropuerto?',
+
+  // New analysis
+  'step1Title': 'Datos generales',
+  'selectairport': 'Selecciona el aeropuerto: ',
+  'addAirportStep1': 'o añade los datos del aeropuerto si no lo encuentras: '
+
 };

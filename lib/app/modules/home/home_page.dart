@@ -12,7 +12,8 @@ import 'package:tfg_frontend/app/modules/home/widgets/admin/airports/add_airport
 import 'package:tfg_frontend/app/modules/home/widgets/admin/airports/airports.dart';
 import 'package:tfg_frontend/app/modules/home/widgets/admin/airports/edit_airport.dart';
 import 'package:tfg_frontend/app/modules/home/widgets/list_sidemenu.dart';
-import 'package:tfg_frontend/app/modules/home/widgets/principal_page.dart';
+import 'package:tfg_frontend/app/modules/home/widgets/new_analysis/new_analysis.dart';
+import 'package:tfg_frontend/app/modules/home/widgets/principal_page/principal_page.dart';
 import 'package:tfg_frontend/app/modules/home/widgets/admin/users/add_user.dart';
 import 'package:tfg_frontend/app/modules/home/widgets/admin/users/edit_user.dart';
 import 'package:tfg_frontend/app/modules/home/widgets/admin/users/users.dart';
@@ -63,10 +64,7 @@ class HomePage extends GetView<HomeController> {
                 Container(
                   color: Theme.of(context).colorScheme.background,
                   child: const Center(
-                    child: Text(
-                      'Nuevo análisis',
-                      style: TextStyle(fontSize: 35),
-                    ),
+                    child: NewAnalysis(),
                   ),
                 ),
                 Container(
@@ -81,10 +79,7 @@ class HomePage extends GetView<HomeController> {
                 Container(
                   color: Theme.of(context).colorScheme.background,
                   child: const Center(
-                    child: Text(
-                      'Perfil',
-                      style: TextStyle(fontSize: 35),
-                    ),
+                    child: EditUser(),
                   ),
                 ),
                 Container(),

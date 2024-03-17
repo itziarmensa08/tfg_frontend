@@ -1,6 +1,13 @@
 
 final Map<String, String> en = {
 
+  //General
+  'yes': 'Yes',
+  'no': 'No',
+  'confirm': 'Confirm',
+  'next': 'Next',
+  'cancel': 'Cancel',
+
   //Languages
   'en_US': 'English',
   'ca': 'Catalan',
@@ -75,8 +82,6 @@ final Map<String, String> en = {
   'userDeleted': 'User deleted successfully',
   'deleteUser': 'Delete user',
   'confirmDeleteUser': 'Are you sure you want to delete this user?',
-  'yes': 'Yes',
-  'no': 'No',
 
   //Edit user
   'editUser': 'Edit user',
@@ -105,4 +110,9 @@ final Map<String, String> en = {
   'editAirportSuccess': 'Aircraft updated successfully',
   'deleteAirport': 'Delete airport',
   'confirmDeleteAirport': 'Are you shure you want to delete this airport?',
+
+  // New analysis
+  'step1Title': 'General data',
+  'selectairport': 'Select the airport: ',
+  'addAirportStep1': 'or add the airport details if you can\'t find it: '
 };

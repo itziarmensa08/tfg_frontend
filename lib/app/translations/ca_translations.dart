@@ -4,6 +4,9 @@ final Map<String, String> ca = {
   //General
   'yes': 'Si',
   'no': 'No',
+  'confirm': 'Confirmar',
+  'next': 'Següent',
+  'cancel': 'Cancelar',
 
 
   //Languages
@@ -108,5 +111,10 @@ final Map<String, String> ca = {
   'editAirportSuccess': 'Aeroport editat correctament',
   'deleteAirport': 'Eliminar aeroport',
   'confirmDeleteAirport': 'Estàs segur que vols borrar aquest aeroport?',
+
+  // New analysis
+  'step1Title': 'Dades generals',
+  'selectairport': 'Selecciona l\'aeroport: ',
+  'addAirportStep1': 'o afegeix les dades de l\'aeroport si no el trobes: '
   
 };

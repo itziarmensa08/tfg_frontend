@@ -192,7 +192,7 @@ class EditAirportForm extends Container {
                   );
                 },
                 icon: const Icon(Icons.delete, color: Colors.red),
-                label: Text('deleteAircraft'.tr, style: textPrimaryColorTextStyle.copyWith(color: Colors.red)),
+                label: Text('deleteAirport'.tr, style: textPrimaryColorTextStyle.copyWith(color: Colors.red)),
               ),
             ],
           ),

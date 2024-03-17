@@ -9,11 +9,13 @@ import 'package:tfg_frontend/app/data/provider/api.dart';
 import 'package:tfg_frontend/app/data/repository/home_repository.dart';
 import 'package:tfg_frontend/app/modules/home/home_controller.dart';
 import 'package:tfg_frontend/app/modules/home/widgets/admin/airports/add_airport.dart';
+import 'package:tfg_frontend/app/modules/home/widgets/new_analysis/new_analysis.dart';
 
 class AddAirportForm extends Container {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final AddAirportController controller = Get.put(AddAirportController(HomeRepository(MyApi())));
   final HomeController controllerHome = Get.put(HomeController(HomeRepository(MyApi())));
+  final NewAnalysisController controllerNew = Get.put(NewAnalysisController());
 
   AddAirportForm({super.key});
 
@@ -152,6 +154,9 @@ class AddAirportForm extends Container {
                 }
                 controllerHome.seeAirports.value = true;
                 controllerHome.seeAddAirports.value = false;
+
+                controllerNew.addAirport.value = false;
+                controllerNew.selectedAirport.value = airports?[airports.length - 1];
               }
             },
             icon: const Icon(Icons.save, color: darkGray),
