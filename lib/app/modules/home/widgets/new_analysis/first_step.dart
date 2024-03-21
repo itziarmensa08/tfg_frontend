@@ -51,6 +51,62 @@ class FirstStep extends StatelessWidget {
             }, icon: const Icon(Icons.add_box_outlined))
           ],
         ),
+        const SizedBox(height: 20),
+        Row(
+          children: [
+            const SizedBox(width: 10),
+            Text('Introduce el número de la pista: ', style: textBlackTextStyle.copyWith(fontWeight: FontWeight.bold)),
+            const SizedBox(width: 10),
+            TextFormField(
+              cursorColor: Theme.of(context).hintColor,
+              style: textDarkGrayTextStyle,
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: Theme.of(context).colorScheme.background,
+                labelText: 'Pista',
+                labelStyle: textDarkGrayTextStyle,
+                floatingLabelStyle: textOrangeTextStyle,
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Theme.of(context).colorScheme.background,
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Theme.of(context).colorScheme.background,
+                  ),
+                ),
+                suffixIcon: const Icon(Icons.person, color: Color(0xFFCBC8C8),),
+              ),
+            ),
+            const SizedBox(width: 10),
+            Text('Y el nombre del punto crítico: ', style: textBlackTextStyle.copyWith(fontWeight: FontWeight.bold)),
+            const SizedBox(width: 10),
+            TextFormField(
+              cursorColor: Theme.of(context).hintColor,
+              style: textDarkGrayTextStyle,
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: Theme.of(context).colorScheme.background,
+                labelText: 'Decision point',
+                labelStyle: textDarkGrayTextStyle,
+                floatingLabelStyle: textOrangeTextStyle,
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Theme.of(context).colorScheme.background,
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Theme.of(context).colorScheme.background,
+                  ),
+                ),
+                suffixIcon: const Icon(Icons.person, color: Color(0xFFCBC8C8),),
+              ),
+            ),
+            
+          ],
+        ),
       ],
     );
   }

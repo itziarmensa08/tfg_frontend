@@ -26,7 +26,7 @@ class LoginPage extends GetView<LoginController> {
                   padding: const EdgeInsets.only(top: 50.0),
                   child: Card(
                     color: Colors.white,
-                    margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.35, right: MediaQuery.of(context).size.width * 0.35),
+                    margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.2, right: MediaQuery.of(context).size.width * 0.2),
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(20.0, 50.0, 20.0, 20.0),
                       child: Column(

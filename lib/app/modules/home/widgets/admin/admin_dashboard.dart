@@ -168,8 +168,8 @@ class _DashboardCardState extends State<DashboardCard> {
             borderRadius: BorderRadius.circular(15.0),
           ),
           child: SizedBox(
-            width: 250,
-            height: 150,
+            width: 275,
+            height: 175,
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
